@@ -207,7 +207,9 @@ angular.module('app.controllers', [])
 		 $scope.LoginwithFacebook = function(){
         console.log("clicked");
         $cordovaOauth.facebook("419763941691558", ["email"]).then(function(result) {
-                alert("Auth Success..!!"+result);
+            console.log(result);
+       
+			    alert("Auth Success..!!"+result);
             }, function(error) {
                 alert("Auth Failed..!!"+error);
             });
