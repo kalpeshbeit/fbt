@@ -1,0 +1,99 @@
+<ion-view view-title="{{'new_customer' | translate}}">
+    <ion-content overflow-scroll="false" class="register-container">
+        <form ng-submit="doRegister()">
+            <div class="list padding">
+                <!-- 短信验证.form__field -->
+                <label class="item item-input">
+                    <span class="input-label">{{'mobile' | translate}}*</span>
+                    <input autofocus type="tel"
+                           placeholder="{{'mobile_tip' | translate}}"
+                           ng-model="registerData.default_mobile_number">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">{{'validation_code' | translate}}*</span>
+                    <input type="text" placeholder="{{'validation_code' | translate}}"
+                           ng-model="registerData.validation_Code">
+                </label>
+                <label class="item getVali">
+                    <span class="padding-left">{{registerData.valiinfo}}</span>
+                    <button class="button button-outline button-assertive"
+                            value="{{'get_validation_code' | translate}}"
+                            ng-click="getValidationCode()"
+                            ng-disabled="validationCodeDisabled">
+                        <em ng-if="validationCodeDisabled">
+                            {{'wait' | translate}}({{validateSeconds}}{{'second' | translate}})
+                        </em>
+                        <em ng-if="!validationCodeDisabled">
+                            {{'get_validation_code' | translate}}
+                        </em>
+                    </button>
+                </label>
+                <!-- end 短信验证.form__field -->
+
+                <div class="item item-divider">
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">{{'email' | translate}}</span>
+                    <input type="text" placeholder="{{'email_reg' | translate}}"
+                           ng-model="registerData.email">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{'last_name' | translate}}*</span>
+                    <input type="text" placeholder="{{'last_name' | translate}}"
+                           ng-model="registerData.lastname" ng-focus="mobileChange()">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{'first_name' | translate}}*</span>
+                    <input type="text" placeholder="{{'first_name' | translate}}"
+                           ng-model="registerData.firstname">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{'gender' | translate}}*</span>
+                    <label class="item item-radio">
+                        <input name="gender" type="radio" value="1"
+                               ng-model="registerData.gender"
+                               checked>
+
+                        <div class="item-content icon-left ion-male"> {{'male' | translate}}</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                    <label class="item item-radio">
+                        <input name="gender" type="radio" value="2"
+                               ng-model="registerData.gender"
+                               checked>
+
+                        <div class="item-content icon-left ion-female"> {{'female' | translate}}</div>
+                        <i class="radio-icon ion-checkmark"></i>
+                    </label>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{'password' | translate}}*</span>
+                    <input type="password" placeholder="{{'password' | translate}}"
+                           ng-model="registerData.password">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">{{'confirm_password' | translate}}*</span>
+                    <input type="password" placeholder="{{'confirm_password' | translate}}"
+                           ng-model="registerData.confirmation">
+                </label>
+                <li class="privacy item">
+                    <a ng-click="showPrivacy();">{{'term_privacy' | translate}}</a>
+                 </li>
+                <li class="privacy item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="registerData.agreePrivacy">
+                    </label>
+                    {{'read_agree' | translate}}
+                </li>
+                <button class="button button-full button-assertive"
+                        type="submit" ng-disabled='!(registerData.agreePrivacy)'> {{'submit' | translate}}
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

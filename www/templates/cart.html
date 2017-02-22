@@ -1,0 +1,18 @@
+<ion-view cache-view="false" view-title="{{'cart' | translate}}">
+    <ion-content>
+        <div class="list">
+            <div ng-repeat="item in cartList" class="item item-thumbnail-left">
+                <img src="{{item.thumbnail_pic_url}}">
+                <h2>{{item.item_title}}</h2>
+                <div ng-repeat="option in item.custom_option" >
+
+                </div>
+                <div>
+                    <span class="price">
+                    {{symbol}}{{item.item_price | number:0}}&nbsp;&nbsp;x&nbsp;{{item.qty}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

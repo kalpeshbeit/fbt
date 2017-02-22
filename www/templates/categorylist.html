@@ -1,0 +1,31 @@
+<ion-view view-title="{{listTitle | translate}}">
+    <ion-content scroll="false" overflow-scroll="true">
+        <ion-content lazy-scroll style="height:100%" overflow-scroll="true" direction="y" locking="true">
+            <ion-refresher
+                    pulling-text="{{'pull_to_refresh' | translate}}"
+                    on-refresh="doRefresh()">
+            </ion-refresher>
+            <ion-list class="products-grid {{lineClass}}">
+                <div class="product" collection-repeat="product in lists">
+                    <div class="product-inner">
+                        <a href="#app/CategoryProductList/{{product.category_id}}">
+                            <div class="product-image">
+                                <img image-lazy-src="{{product.image_url}}"
+                                     lazy-scroll-resize="true"
+                                     image-lazy-loader="lines">
+                            </div>
+                        </a>
+
+                        <div class="product-info">
+                            <div class="product-name">
+                                {{product.name}}
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </ion-list>
+          
+    </ion-content>
+</ion-view>

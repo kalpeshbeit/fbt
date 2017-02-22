@@ -1,0 +1,38 @@
+<ion-view cache-view="false" view-title="{{titleText}}-{{'search_agent' | translate}}">
+    <!--
+    <ion-nav-buttons side="right">
+        <a href="#app/agents" class="button button-icon nav-clear menu-close ion-ios-list-outline"></a>
+        <a href="#app/agents" class="button button-icon nav-clear menu-close ion-android-globe"></a>
+        <a href="#app/home" class="button button-icon nav-clear menu-close ion-ios-home-outline"></a>
+    </ion-nav-buttons>
+    -->
+    <ion-content>
+        <ion-content style="height:100%">
+            <ion-tabs class="tab-agents tabs-ligth tabs-standard">
+                <ion-tab title="{{'list_view' | translate}}" id="tab_agent_list">
+                    <ion-scroll>
+                        <div class="list padding-horizontal">
+                            <div class="row" ng-repeat="agent in agentList">
+                                <div class="col col-20">
+                                    <a class="button button-balanced icon-left ion-ios-telephone-outline" href="tel:{{agent.telephone}}"
+                                       onclick="window.open(this.href, '_system', 'location=yes');return false;"></a>
+                                </div>
+                                <div class="col" ng-click="showAgent()">
+                                    <h3>{{agent.store_name}}</h3>
+                                    <div class="row">
+                                        <div class="col-75">{{agent.address}}({{agent.telephone}})</div>
+                                        <div class="col distance">{{agent.distance | number:0}} km</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                    </ion-scroll>
+                </ion-tab>
+                <ion-tab  scroll="false" title="{{'map_view' | translate}}" id="tab_agent_map" on-select="showMap()">
+                    <div><div id="map"></div></div>
+                </ion-tab>
+            </ion-tabs>
+        </ion-content>
+    </ion-content>
+</ion-view>
