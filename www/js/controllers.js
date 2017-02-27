@@ -15,7 +15,7 @@ angular.module('app.controllers', [])
             $scope.dynamic_menus = {};
             $rootScope.service.get('menus', {}, function (results) {
                 $scope.dynamic_menus = results;
-               
+                console.log($scope.dynamic_menus);
             });
         $scope.isIOS = ionic.Platform.isIPad() ||  ionic.Platform.isIOS();
 
@@ -207,12 +207,10 @@ angular.module('app.controllers', [])
 		 $scope.LoginwithFacebook = function(){
         console.log("clicked");
         $cordovaOauth.facebook("419763941691558", ["email"]).then(function(result) {
-			 console.log(result);
+            console.log(result);
        
-	   
-                alert("Auth Success..!!"+result);
+			    alert("Auth Success..!!"+result);
             }, function(error) {
-				console.log(error);
                 alert("Auth Failed..!!"+error);
             });
       };
