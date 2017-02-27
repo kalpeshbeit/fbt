@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "ebranch.mobile.fbapp"
+        id        = "ebranch.mobile.app"
         version   = "1.0.0" 
         android-versionCode="1"
         ios-CFBundleVersion="1.0.0"
 >
-    <name>FB Ebranch</name>
+    <name>Ebranch</name>
     <description>Ebranch Mobile app</description>
     <author email="patel.kalpeshbeit2010@gmail.com" href="http://shubantechnologies.com">Kalpesh Patel</author>
     <content src="index.html" />

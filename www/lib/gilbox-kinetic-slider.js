@@ -109,7 +109,7 @@
             contElm.bind(startTypes, function(event) {
               var elementStartX;
               event.preventDefault();
-              allowClick = false;
+              allowClick = true;
               v = 0;
               elementStartX = xOff;
               interactionStart = interactionCurrent = browserHelper.getTouchPoint(event);
