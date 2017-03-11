@@ -9,11 +9,11 @@ angular.module('app', [
    
    
    payPalSandboxId : 'patel.kalpeshbeit2010-facilitator@gmail.com',
-   payPalProductionId : 'production id here',
+   payPalProductionId : 'patel.kalpeshbeit2010-facilitator@gmail.com',
    payPalEnv: 'PayPalEnvironmentSandbox',   // for testing  production for production
    payPalShopName : 'MyShopName',
-   payPalMerchantPrivacyPolicyURL : 'url to policy',
-   payPalMerchantUserAgreementURL : ' url to user agreement '
+   payPalMerchantPrivacyPolicyURL : 'http://pr.veba.co/~shubantech/ebranch',
+   payPalMerchantUserAgreementURL : 'http://pr.veba.co/~shubantech/ebranch'
    
    
    
