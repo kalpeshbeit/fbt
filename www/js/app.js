@@ -132,6 +132,7 @@ angular.module('app', [
         function makePayment(total, name) {
 
 
+
             var defer = $q.defer();
             total = $filter('number')(total, 2);
 			 console.log(total);
