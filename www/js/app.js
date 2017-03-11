@@ -56,6 +56,7 @@ angular.module('app', [
                     "PayPalEnvironmentProduction": shopSettings.payPalProductionId,
                     "PayPalEnvironmentSandbox": shopSettings.payPalSandboxId
                 };
+				console.log(clientIDs);
                 PayPalMobile.init(clientIDs, onPayPalMobileInit);
             });
 
@@ -77,7 +78,7 @@ angular.module('app', [
          * @returns {object} PayPalPaymentObject
          */
         function createPayment(total, name) {
-                
+                console.log("Total:"+total+"Name:"+name);
             // "Sale  == >  immediate payment
             // "Auth" for payment authorization only, to be captured separately at a later time.
             // "Order" for taking an order, with authorization and capture to be done separately at a later time.
@@ -96,6 +97,7 @@ angular.module('app', [
          */
         function configuration() {
             // for more options see `paypal-mobile-js-helper.js`
+			 console.log(shopSettings);
             var config = new PayPalConfiguration({merchantName: shopSettings.payPalShopName, merchantPrivacyPolicyURL: shopSettings.payPalMerchantPrivacyPolicyURL, merchantUserAgreementURL: shopSettings.payPalMerchantUserAgreementURL});
             return config;
         }
@@ -103,6 +105,7 @@ angular.module('app', [
         function onPayPalMobileInit() {
             $ionicPlatform.ready().then(function () {
                 // must be called
+				 console.log(shopSettings.payPalEnv);
                 // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
                 PayPalMobile.prepareToRender(shopSettings.payPalEnv, configuration(), function () {
 
@@ -131,6 +134,7 @@ angular.module('app', [
 
             var defer = $q.defer();
             total = $filter('number')(total, 2);
+			 console.log(total);
             $ionicPlatform.ready().then(function () {
                 PayPalMobile.renderSinglePaymentUI(createPayment(total, name), function (result) {
                     $timeout(function () {
