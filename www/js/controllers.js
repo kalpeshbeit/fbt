@@ -2108,6 +2108,7 @@ console.log("init paapal before");
 			PaypalService.initPaymentUI().then(function () {
 				PaypalService.makePayment($scope.price, $scope.produit)
 				.then(function (response) {
+					console.log(response);
 					alert("success"+JSON.stringify(response));
 				},function (error) {
 					alert("error"+JSON.stringify(error));
