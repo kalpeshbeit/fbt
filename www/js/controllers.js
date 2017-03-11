@@ -2104,11 +2104,11 @@ angular.module('app.controllers', [])
 			
 			$scope.price = 1.99;
 $scope.produit = 'Abonnement 7j';
-$scope.go = function() {
-            PaypalService.initPaymentUI().then(function () {
+console.log("init paapal before");
+ PaypalService.initPaymentUI().then(function () {
+				console.log("init paapal");
                 PaypalService.makePayment($scope.price, $scope.produit);
             });
-			 };
 			
 			
 			$rootScope.service.get('order', params, function (res) {
