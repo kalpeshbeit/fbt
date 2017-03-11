@@ -6,7 +6,7 @@
         android-versionCode="2"
         ios-CFBundleVersion="1.0.0"
 >
-    <name>Ebranch</name>
+    <name>Paypal Ebranch</name>
     <description>Ebranch Mobile app</description>
     <author email="patel.kalpeshbeit2010@gmail.com" href="http://shubantechnologies.com">Kalpesh Patel</author>
     <content src="index.html" />
