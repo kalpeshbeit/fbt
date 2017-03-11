@@ -8,7 +8,7 @@ angular.module('app', [
 .constant('shopSettings',{
    
    
-   payPalSandboxId : 'oyeamrut-1@gmail.com',
+   payPalSandboxId : 'AdjksaEs2_YzWFOl0hpAD4chm_v_nbOQNmoeD1fMftDf5o3Md-FMcZW7P4DNDf9hsU70Zq3QV-T65Crv',
    payPalProductionId : 'patel.kalpeshbeit2010-facilitator@gmail.com',
    payPalEnv: 'PayPalEnvironmentSandbox',   // for testing  production for production
    payPalShopName : 'MyShopName',
