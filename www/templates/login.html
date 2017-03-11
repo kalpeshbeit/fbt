@@ -3,8 +3,9 @@
 
 <ion-header-bar style=" background:#0188cc;" class="set-header">
        <div class="buttons">
-         <a class="button button-icon ion-arrow-left-c back-btn"  href="#/"></a>
+         <a class="button button-icon ion-arrow-left-c back-btn" href="#/"></a>
        </div>
+        <div style="width:100%;"> <p class="logo-set set-center"> <img src="img/logo-1.png" alt="logo" /></p></div>
      </ion-header-bar>
  
  
@@ -13,7 +14,7 @@
      <!-- <h3>&nbsp;  </h3>-->
         
         
-          <p class="logo-set set-center"> <img src="img/logo-1.png" alt="logo" width="120" height=""/></p>
+       
     
     
     <div class="fb-login-set space2">
@@ -21,7 +22,7 @@
         
             
            
-            <p class="set-center"> <a href="#" ng-click="LoginwithFacebook()"><img src="img/fb-login.png" alt="logo" width="" height="40"/> </a></p>
+            <p class="set-center"> <a href="#" ng-click="fbLogin()"><img src="img/fb-login.png" alt="logo" width="" height="40"/> </a></p>
             
             
              <div class="no-span seprator set-center">
@@ -35,20 +36,14 @@
         <form ng-submit="doLogin()" class="login">
              <div class="inputset">   <label class="item item-input">
                <!-- <span class="input-label">{{'email_or_mobile' | translate}}</span>-->
-            <input type="text" required autofocus placeholder="{{'email_or_mobile' | translate}}" ng-model="loginData.username">
+            <input type="text"  autofocus placeholder="{{'email_or_mobile' | translate}}" ng-model="loginData.username">
                 <span class="icon"><i class="fa fa-envelope"></i></span></div>
             </label>
          <div class="inputset">   <div class="item item-input">
              <!--   <span class="input-label">{{'password' | translate}}</span>-->
-                <input id="password" required type="password" ionic-password-show-hide placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
+                <input id="password"  type="password" ionic-password-show-hide placeholder="{{'password' | translate}}" ng-model="loginData.password"><span class="icon"><i class="fa fa-lock"></i></span></div>
             </div>
-            <div class="inputset item item-checkbox">
-              <label class="checkbox">
-                    <!--<input type="checkbox" ng-model="loginData.rememberme" class="checkbox-square">-->
-                    <input type="checkbox" id="show_hide_pw" ng-click="show_hide_pw()" class="checkbox-square">
-                </label>
-                {{'show password' | translate}}
-            </div>
+            
              <!--<input type="password" name="uPassword" minlength="3" placeholder="Password" ng-model="loginData.password" ui-show-password required>-->
                 <button class="button button-full-1 button-assertive"
                         type="submit" > {{'login_submit' | translate}}
@@ -57,7 +52,7 @@
             <div class="list">
                 <div class="row set-center">
                     <div class="forgot-pass space1">
-                        <a ng-click="hideLogin()"  menu-toggle="left" href="#app/forgotPwd">{{'forgot_password' | translate}}</a>
+                        <a ng-click="hideLogin()"  href="#app/forgotPwd">{{'forgot_password' | translate}}</a>
                     </div>
                     
                 </div>

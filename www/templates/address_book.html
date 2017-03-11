@@ -1,28 +1,46 @@
-<ion-view view-title="{{'Address Book' | translate}}">
+<style>
+.c_box b {  color:#333333  	}
+.table_top tr, .table_top td {    border: 1px solid #E2E2E2;    text-align: center;
+    font-size: 16px;    box-shadow: 0.5px 1px 2px #999;    color: #999999;    padding: 10px 0;}
+.icon-t{color:#2E2E2E}
+.table_top{	margin-top: 10px !important;}
+.c_box{border: 1px solid #E2E2E2;padding: 8px 8px 3px;margin: 10px 0;border-radius: 4px;
+font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.c_span1{float:left}.c_span2{float: left;margin-top: 7%;}
+.c_box.c_box2 {color: #333;font-weight: bold;    padding: 8px;    margin-top: 30px;}
+.c_title{color:#797979;font-size:19px;}.bline{border-top: solid 1px #E2E2E2;}
+.w50 {    width: 50%;    float: left;    text-align: center;   padding: 5px 0 10px;}
+.w50 a{text-decoration:none}.w50.w50one a{color:#333333 !important;font-weight: bold;}.w50 a{color:#288FD1}
+.w50.w50one {    border-right: solid 1px #E2E2E2; }
+</style>
+<ion-view view-title="{{'address_book' | translate}}" >
 <ion-content overflow-scroll="false">
     <div class="list padding">
+      
+        <div class='c_box c_box2 langchanger'>
+            <span class="contact_lam_hr">{{'add_address' | translate}}</span>
+            <span class="ion-chevron-right" style="float:right"></span>
+        </div>
+                    
+      	<div class="c_title langchanger ng-binding" style="margin-top: 30px;margin-bottom:20px;">{{'default_address' | translate}}</div>
+          
+        <div class="c_box">
+            <b>{{address_detail.firstname}}&nbsp;{{address_detail.lastname}} </b><br /><br />
+            {{address_detail.street}}, {{address_detail.city}}, {{address_detail.city}}, {{address_detail.postcode}}
+            <br /><br />
+            <b>Contact :</b> {{address_detail.telephone}}<br /><br />
+            
+            <p class="bline"></p>
+            <div class="w50 w50one">
+            	<a id="delete_addrbook" href="#" ng-click="doDeleteaddrbook()">{{'remove' | translate}}</a>
+            </div>
+            <div class="w50">
+            	<a href="#app/editaddressbook">{{'edit' | translate}}</a>
+            </div>
+            
+        </div>        
         
-        <div>
-            <b>Name</b>:&nbsp;{{address_detail.firstname}}&nbsp;{{address_detail.lastname}} 
-        </div>
-        <div>
-            <b>Company</b>:&nbsp;{{address_detail.company}}
-        </div>
-        <div>
-            <b>Street</b>:&nbsp;{{address_detail.street}}
-        </div>
-        <div>
-            <b>City</b>:&nbsp;{{address_detail.city}}
-        </div>
-        <div>
-            <b>Region</b>:&nbsp;{{address_detail.region}}
-        </div>
-        <div>
-            <b>Postcode</b>:&nbsp;{{address_detail.postcode}}
-        </div>
-        <div>
-            <b>Telephone</b>:&nbsp;{{address_detail.telephone}}
-        </div>
+        
         
     </div>
 </ion-content>

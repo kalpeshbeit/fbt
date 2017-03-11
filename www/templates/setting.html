@@ -1,15 +1,30 @@
+<style>
+.c_title{color:#797979;font-size:16px;line-height:1.5}
+.c_box{border: 1px solid #E2E2E2;
+margin: 10px 0 25px;
+font-size: 16px;
+font-weight: bold;
+color: #303030;
+box-shadow: 0.5px 1px 1px #999;overflow:hidden
+}
+.ion-checkmark::before{color:#007EBE}
+.item-content.ng-binding {
+    background: #FFF !important;
+    color: #787878;
+}
+</style>
 <ion-view view-title="{{'settings' | translate}}">
-    <ion-content>
+    <ion-content class="langchanger">
         <ul class="list">
             <li class="item">
-                <h2>{{'language' | translate}}</h2>
-                <label class="item item-radio" ng-repeat="language in languages">
+                <h2 class="c_title set-center">{{'language' | translate}}</h2>
+                <label class="c_box item item-radio" ng-repeat="language in languages">
                     <input ng-click="changeLocale()" type="radio" name="locale"
                            ng-model="locale" value="{{language.store_code}}">
 
-                    <div class="item-content">
+                    <div class="item-content"
                         <span class="padding-horizontal">{{language.name}}</span>
-                    </div>
+                    </div>                    
                     <i class="radio-icon ion-checkmark"></i>
                 </label>
             </li>

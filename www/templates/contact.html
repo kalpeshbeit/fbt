@@ -1,69 +1,164 @@
 <style>
-    .table_top tr,.table_top td {
-    border: 1px solid black;
+.table_top tr, .table_top td {
+    border: 1px solid #E2E2E2;
     text-align: center;
+    font-size: 16px;
+    box-shadow: 0.5px 1px 2px #999;
+    color: #999999;
+    padding: 10px 0;
 }
+.icon-t{color:#2E2E2E}
     .table_top{
         margin-top: 10px !important;
     }
-
+.c_box{border: 1px solid #E2E2E2;
+padding: 8px 8px 3px;
+margin: 10px 0;
+font-size: 16px;
+font-weight: bold;
+color: #303030;
+box-shadow: 0.5px 1px 1px #999;overflow:hidden
+}
+.c_span1{float:left}
+.c_span2{float: left;
+margin-top: 7%;}
+.c_box.c_box2 {
+    padding: 8px;
+    margin-top: 30px;
+}
+.c_title{color:#797979;font-size:19px;}
 </style>
-<ion-view view-title="{{'Contact Us' | translate}}">
+<ion-view view-title="{{'contact_us' | translate}}">
 <ion-content overflow-scroll="false">
     <div class="list padding">
-        <div style="padding:10px;font-size: 14px">
-            <span>Manage your orders</span>
-            <table class="table_top">
-                <tr>
-                    <td style="width:100px">
-                        <span class="ion-ios-paw"></span>
-                        <br>
-                        Track
-                    </td>
-                    <td style="width:150px">
-                        <span class="ion-ios-cart"></span>
-                        <br>
-                        Cancel
-                    </td>
-                    <td style="width:100px">
-                        <span class="ion-ios-cart"></span>
-                        <br>
-                        Return
-                    </td>
-                </tr>
-            </table>
-            <div style="border: 1px solid black;padding: 10px;margin-top: 30px !important;">
-                Leave a Message
-                <span class="ion-chevron-right" style="float:right"></span>
-            </div>
-            <div style="margin-top: 30px">Contact Details</div>
-            <div style="border: 1px solid black;padding: 10px;margin-top: 20px !important;">
-                <span class="ion-android-call" style="float:left"></span>
-                &nbsp;&nbsp; 0201 203 2032
-            </div>
-            <div style="border: 1px solid black;padding: 10px;margin-top: 10px !important;">
-                <span class="ion-iphone" style="float:left"></span>
-                &nbsp;&nbsp;&nbsp;&nbsp;201-123-3922
-            </div>
-            <div style="border: 1px solid black;padding: 10px;margin-top: 10px !important;">
-                <span class="ion-email" style="float:left"></span>
-                &nbsp;&nbsp;mail@example.com
-            </div>
-            <div style="margin-top: 10px">Follow Us</div>
+         <div style="padding:10px;font-size: 14px">
+            
+            <!--
+            <a href="sms:2011233922" style="text-decoration: none !important;color:#000000 !important">
+                <div class='c_box c_box2 langchanger'>
+                    <span class="contact_lam_hr">{{'leave_a_message' | translate}}</span>
+                    <span class="ion-chevron-right" style="float:right"></span>
+                </div>
+            </a>
+            -->
+            
+            <a ng-click="openModal()" style="text-decoration: none !important;color:#000000 !important">
+                <div class='c_box c_box2 langchanger'>
+                    <span class="contact_lam_hr">{{'leave_a_message' | translate}}</span>
+                    <span class="ion-chevron-right" style="float:right"></span>
+                </div>
+            </a>
+            
+                        
+            <div style="width: 100%"><iframe width="100%" height="190" src="http://www.mapi.ie/create-google-map/map.php?width=100%&amp;height=190&amp;hl=en&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="http://www.mapsdirections.info/fr/mesurer-distance-surface-google-maps.html">distance entre deux points carte</a> en <a href="http://www.mapsdirections.info/fr/">www.mapsdirections.info/fr/</a></iframe></div><br />
+            <div class="c_title langchanger" style="margin-top: 30px;margin-bottom:20px;">{{'contact_details' | translate}}</div>
+            <a href="tel:2012032032" style="text-decoration: none !important;color:#000000 !important">
+                <div class='c_box'>
+                    <span class="c_span1"><img src="img/call-c.png" width="54" height="55" /></span>
+                    <span class="c_span2">&nbsp;&nbsp; 0201 203 2032</span>
+                </div>
+            </a>
+            <a href="tel:2011233922" style="text-decoration: none !important;color:#000000 !important">
+                <div class="c_box">
+					<span class="c_span1"><img src="img/call-c2.png" width="54" height="55" /></span>
+                    <span class="c_span2">&nbsp;&nbsp;201-123-3922</span>
+                </div>
+            </a>
+            <a href="mailto:hardik4hardik@gmail.com" style="text-decoration: none !important;color:#000000 !important">
+                <div class="c_box">
+                	<span class="c_span1"><img src="img/msg-c.png" width="54" height="55" /></span>
+                    <span class="c_span2">&nbsp;&nbsp;mail@example.com</span>
+                </div>
+            </a>
+            <div class="c_title langchanger" style="margin-top:25px;margin-bottom:20px">{{'follow_us' | translate}}</div>
             <table style="margin-top: 10px;text-align: center">
                 <tr>
                     <td style="width:100px">
-                        <span class="ion-social-twitter"></span>
+                        <img src="img/twt-c.png" width="74" height="74" />
                     </td>
                     <td style="width:100px">
-                        <span class="ion-social-facebook"></span>
+						<img src="img/fb-c.png" width="74" height="74" />
                     </td>
                     <td style="width:100px">
-                        <span class="ion-social-googleplus-outline"></span>
-                    </td>
+						<img src="img/pin-c.png" width="74" height="74"  />
+                     </td>
                 </tr>
             </table>
         </div>
     </div>
 </ion-content>
 </ion-view>
+
+<style>
+.c_box b {  color:#333333  	}
+.c_box{border: 1px solid #E2E2E2;padding: 8px 8px 7px;margin: 10px 0;
+font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.con-item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE !important;padding:0px !important;
+border-radius: 0 !important;}
+input::-moz-placeholder, textarea::-moz-placeholder {    color: #333 !important;}
+.binp{color: #777;
+font-weight: inherit;}
+.rbtn{margin: 4px 5px 0 0 !important;float: left;}
+.item-stable.item.ng-binding {    border: none;    margin: 0;}
+.item-stable.item.ng-binding.active {    background: none;}
+.ng-pristine.ng-valid {    width: 100%;}
+.ion-chevron-right::before{float:right;margin-top: 3px;}
+.ion-chevron-down::before{float:right;margin-top: 3px;}
+.item-accordion.item.ng-binding {    border: none;}
+.btn_cnt2{width:100%;background: #008BD5;border: none;color: #FFF;padding: 5px 20px;font-size: 30px;}
+.bar.bar-positive{background: #008BD5;}
+</style>
+<script id="templates/myform.html" type="text/ng-template">
+        <ion-modal-view class="product edit create">
+          <form name="itemEdit" novalidate>
+            <ion-header-bar class="bar-positive fix-buttons">
+              <a class="button" ng-click="closeModal()">Cancel</a>
+              <h1 class="title">Message</h1>
+            </ion-header-bar>
+            <ion-content has-bouncing="true">
+              <div class="row" ng-class="{'no-padding-top': !data.editItem}">
+                <div class="col">
+                  <label class="item con-item item-input large">
+                    <input type="text" placeholder="Name" id="name" name="codice_prodotto" ng-model="codice_prodotto">
+                  </label>
+                </div>
+              </div>              
+              <div class="row">
+                <div class="col">
+                  <label class="item con-item item-input large">
+                    <input type="email" placeholder="Email" id="email">
+                  </label>
+                </div>
+              </div>
+			  <div class="row">
+                <div class="col">
+                  <label class="item con-item item-input large">
+                    <input type="text" placeholder="Telephone" id="telephone">
+                  </label>
+                </div>
+              </div>
+              <div class="row description-row">
+                <div class="col">
+                  <label class="item con-item item-input text">
+                    <textarea placeholder="Description" id="comment" rows="5" ng-model="item.description" ng-Required="true" name="description" lose-focus-on-return></textarea>
+                  </label>
+                </div>
+              </div>
+			  
+			  <div class="row description-row">
+                <div class="col">                 
+                    <input class="btn_cnt2" type="submit" name="Submit" value="Submit" placeholder="Submit" ng-click="carica()">
+                </div>
+              </div>
+
+              <div class="row charity-row">
+                <div class="col col-10 vert-center">
+                  <div class="charity large"></div>
+                </div>
+              </div>
+
+
+            </ion-content>
+          </form>
+        </ion-modal-view>
+  </script>

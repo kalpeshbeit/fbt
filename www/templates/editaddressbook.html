@@ -1,0 +1,50 @@
+<ion-view view-title="{{'Edit Adrress Book'| translate}}">
+    <ion-content overflow-scroll="false">
+        <div class="list padding">
+            <form ng-submit="doEditaddrbook()">
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'firstname'| translate}}" value="{{address_detail.firstname}}" ng-model="editaddrbookData.firstname">
+                    </label>
+                </div>    
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'lastname'| translate}}" value="{{address_detail.lastname}}" ng-model="editaddrbookData.lastname">
+                    </label>
+                </div>    
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'street'| translate}}" value="{{address_detail.street}}" ng-model="editaddrbookData.street">
+                    </label>
+                </div>    
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'city'| translate}}" value="{{address_detail.city}}" ng-model="editaddrbookData.city">
+                    </label>
+                </div>    
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'region'| translate}}" value="{{address_detail.region}}" ng-model="editaddrbookData.region">
+                    </label>
+                </div>    
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'postcode'| translate}}" value="{{address_detail.postcode}}" ng-model="editaddrbookData.postcode">
+                    </label>
+                </div>    
+                <div class="inputset">   
+                    <label class="item item-input">
+                        <input type="text" autofocus placeholder="{{'telephone'| translate}}" value="{{address_detail.telephone}}" ng-model="editaddrbookData.telephone">
+                    </label>
+                </div>    
+
+                <!--<input type="password" name="uPassword" minlength="3" placeholder="Password" ng-model="loginData.password" ui-show-password required>-->
+                <button class="button button-full-1 button-assertive"
+                        type="submit" > {{'submit'| translate}}
+                </button>
+
+
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

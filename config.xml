@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "ebranch.mobile.app"
-        version   = "1.0.0" 
-        android-versionCode="1"
+        id        = "com.ebranch.app"
+        version   = "1.0.1" 
+        android-versionCode="2"
         ios-CFBundleVersion="1.0.0"
 >
     <name>Ebranch</name>
@@ -21,7 +21,7 @@
     <plugin name="cordova-plugin-splashscreen" source="npm" version="3.2.1" />
 <preference name="AutoHideSplashScreen" value="true" />
 <preference name="FadeSplashScreen" value="true" />
-<preference name="FadeSplashScreenDuration" value="500" />
+<preference name="FadeSplashScreenDuration" value="50" />
 <preference name="ShowSplashScreenSpinner" value="false"/>
 <preference name="SplashMaintainAspectRatio" value="true" />
 <preference name="SplashScreen" value="screen" />
@@ -71,13 +71,15 @@
     <allow-navigation href="http://*/*" />
     <preference name="xwalkVersion" value="14+" />
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
-    <preference name="xwalkMode" value="embedded" />
-	<feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-    </feature>
+    <preference name="android-minSdkVersion" value="16" />
+   
     <plugin name="cordova-plugin-device"   />
+     <gap:plugin name="com.paypal.cordova.mobilesdk" source="npm" />
     <plugin name="cordova-plugin-geolocation"   />
-    <plugin name="cordova-plugin-inappbrowser"  />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" />
+    <!--<plugin name="org.apache.cordova.inappbrowser" source="npm"/>-->
+     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+     <gap:plugin name="cordova-plugin-email-composer" version="0.8.3" source="npm" />
     <plugin name="cordova-plugin-network-information"  />
     <plugin name="cordova-plugin-whitelist"  />
     <!--	<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />-->
@@ -91,8 +93,8 @@
     <preference name="permissions" value="none"/>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="LoadUrlTimeoutValue" value="50000" />
-
-
+	
+	
     <access origin="*" />
 
 </widget>

@@ -5,7 +5,7 @@
                     pulling-text="{{'pull_to_refresh' | translate}}"
                     on-refresh="doRefresh()">
             </ion-refresher>
-            <ion-list class="products-grid">
+            <ion-list class="products-grid search-page">
                 <div class="product" ng-repeat="product in results">
                     <div class="product-inner">
                         <a href="#app/productDetail/{{product.entity_id}}">
@@ -20,7 +20,15 @@
                             <div class="product-name">
                                 {{product.name}}
                             </div>
-
+							 
+                            <div class="p_rating">                
+                            <div class="ratings">
+                                <div class="rating-box">
+                                  <div class="rating" style="width:{{product.ratings}}%;"></div>
+                                </div>                    
+                            </div>
+                        </div>        
+                                                        
                             <div  class="product-price">
                                 <div class="price-box">
                                   <span ng-if="product.discount != null" class="special-price">
@@ -48,6 +56,30 @@
                                   </span>
                                 </div>
                             </div>
+                            <div class="p_footer">
+            	<span class="img_left">
+                <a href="#" ng-click="sharewithfriend()">
+            	<img src="img/share-25.png" height="25" width="25" /></a>
+                </span>
+                <span class="img_center">
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-32.png" height="25" width="25" />
+                         </a>
+                    </div>        
+                </span>
+                <span class="img_right">
+                
+                	<div ng-if="true == product.is_in_wishlist">
+                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
+                     </div>
+                     
+                     <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div> 
+                </span>
+            </div>
+                            
                         </div>
                     </div>
                 </div>

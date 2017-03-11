@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="true">
+d<ion-view hide-nav-bar="true">
 
 <ion-header-bar style=" background:#0188cc;" class="set-header">
        <div class="buttons">
@@ -12,7 +12,7 @@
     
    			 <div class="fb-login-set space2">
         
-        			<p class="set-center"> <a href="#"><img src="img/fb-login.png" alt="logo" width="" height="40"/> </a></p>
+        			<p class="set-center"> <a href="#" ng-click="fbRLogin()"><img src="img/fb-login.png" alt="logo" width="" height="40"/> </a></p>
             
             
                          <div class="no-span seprator set-center">
@@ -24,48 +24,45 @@
             
         
         
-        <form ng-submit="doRegister()">
+         <form ng-submit="doRegister()" name="myForm">
             <div class="list padding">
-                <!-- çŸ­ä¿¡éªŒè¯�.form__field -->
-<!--                <div class="item item-divider">
-                </div>-->
-             	<div class="inputset">   <label class="item item-input">
-                  <!--  <span class="input-label">{{'first_name' | translate}}*</span>-->
-                    <input type="text" required placeholder="{{'first_name' | translate}}"
-                           ng-model="registerData.firstname">
-                </label></div>
-              <div class="inputset">  <label class="item item-input">
-                      <!-- <span class="input-label">{{'middle_name' | translate}}*</span>-->
-                    <input type="text" required placeholder="{{'middle_name' | translate}}"
-                           ng-model="registerData.middlename">
-                </label></div>
+                
+            <div class="inputset">   
+                <label class="item item-input">                
+                    <input type="text" name="firstname" id="firstname" placeholder="{{'first_name' | translate}}" ng-model="registerData.firstname">
+                </label>
+            </div>
+              <div class="inputset">  
+              	<label class="item item-input">                  
+                    <input type="text" placeholder="{{'middle_name' | translate}}" ng-model="registerData.middlename">
+                </label>
+              </div>
 
 
-              <div class="inputset">  <label class="item item-input">
-                     <!--  <span class="input-label">{{'last_name' | translate}}*</span>-->
-                    <input type="text" required placeholder="{{'last_name' | translate}}"
-                           ng-model="registerData.lastname" ng-focus="mobileChange()">
-                </label></div>
+              <div class="inputset">  
+              	<label class="item item-input">
+                    <input type="text" placeholder="{{'last_name' | translate}}" ng-model="registerData.lastname">
+                </label>
+              </div>
 
-             <div class="inputset">   <label class="item item-input">
-                     <!--  <span class="input-label">{{'email' | translate}}</span>-->
-                    <input type="text" required placeholder="{{'email_reg' | translate}}"
-                           ng-model="registerData.email">
-                </label></div>
+             <div class="inputset">   
+             	<label class="item item-input">                    
+                    <input type="email" name="email" placeholder="{{'email_reg' | translate}}" ng-model="registerData.email">                           
+                </label>                
+             </div>
 
 
-             <div class="inputset">   <div class="item item-input">
-                    <!--   <span class="input-label">{{'password' | translate}}*</span>-->
-                    <input type="password" required ionic-password-show-hide id="passwordr" placeholder="{{'password' | translate}}"
+             <div class="inputset">   
+             	<div class="item item-input">                    
+                    <input type="password" ionic-password-show-hide id="passwordr" placeholder="{{'password' | translate}}"
                            ng-model="registerData.password">
-                </div></div>
+                </div>
+           	</div>
 
                 <li class="privacy item item-checkbox">
                     <label class="checkbox">
-                        <input type="checkbox" >
-                        <!--<input type="checkbox" id="show_hide_pwr" ng-click="show_hide_pw()" class="checkbox-square">-->
-                    </label>
-                    {{'read_agree' | translate}}
+                        <input type="checkbox"></label>
+	                    {{'read_agree' | translate}}
                 </li>
                 <button class="button button-full-1  button-assertive"
                         type="submit" > {{'register_submit' | translate}}

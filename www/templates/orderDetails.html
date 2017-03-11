@@ -1,0 +1,49 @@
+<style>
+.c_title{color:#777777;font-size:14px;line-height:1.5;font-weight: initial;}
+.c_title2{color:#333;font-size:14px;line-height:1.5;font-weight: initial;margin: 10px 0 10px 0;s}
+.c_box{border: 1px solid #E2E2E2;margin:10px 0 5px;font-size: 16px;font-weight: bold;color: #303030;padding: 5px;
+box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.wl-box2{width:100%}
+.w80{width:70%;float:left}.w20{width:30%;float:left}
+.order.c_box1 {    margin: 10px 10px !important;    overflow: hidden;}
+.obot2{    border: solid 1px #0188CC;    padding: 3px 2%;    color: #0188CC;    border-radius: 10px;font-size:80%}
+.obot3{    background:#0188CC;    padding: 3px 2%;    color: #FFF;    border-radius: 10px;font-size:80%}
+.order a {text-decoration: none;}
+</style>
+<ion-view view-title="{{'order_details' | translate}}">
+    <ion-content scroll="false" overflow-scroll="true">
+        <ion-content lazy-scroll style="height:100%" overflow-scroll="true" direction="y" locking="true">
+            <ion-list class="}">
+                <div class="order c_box1" collection-repeat="lists in orders">                    
+                	<div class="row c_box">                        
+                        <div class="wl-box2">
+                        	
+                            <div class="c_title2">
+                            	
+                                <div class="w80">
+                                	<b>Order No : {{lists.real_order_id}}</b>
+                                </div>
+                                <div class="w20" style="text-align:right">
+                                	<span class="c_title">02/08/2017</b>
+                                </div>
+                                <div style="clear:both"></div>
+                                
+                            	
+                                <div style="margin:10px 0">
+                                <span class="c_title">{{lists.grand_total}} / {{lists.items_data.length}} items</span> 
+                                </div>
+                                                                
+                                <span class="obot" style="width:46%"><b>Ship To: </b><span class="c_title">Faraz Test</span></span>                                
+                                <span class="obot2" style="width:27%"> {{lists.status}}</span>                                
+                                <a href="#app/orderdata/{{lists.real_order_id}}">
+                                <span class="obot3" style="width:27%">VIEW ORDER</span>
+                                </a>
+                            </div>                                          
+                        </div> 
+					</div>                        
+                </div>
+            </ion-list>
+            
+        </ion-content>
+    </ion-content>
+</ion-view>

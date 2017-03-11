@@ -4636,7 +4636,9 @@ ion-tabs.tabs-color-active-dark .tab-item {
     visibility: visible; }
   .loading-container.active {
     opacity: 1; }
+/*
   .loading-container .loading {
+
     padding: 20px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -4646,7 +4648,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
     font-size: 15px; }
     .loading-container .loading h1, .loading-container .loading h2, .loading-container .loading h3, .loading-container .loading h4, .loading-container .loading h5, .loading-container .loading h6 {
       color: #fff; }
-
+*/
 /**
  * Items
  * --------------------------------------------------
@@ -5043,9 +5045,9 @@ a.item-content {
     border-radius: 50%; }
 
 .item-thumbnail-left, .item-thumbnail-left .item-content {
-  padding-top: 8px;
+/*  padding-top: 8px;
   padding-left: 106px;
-  min-height: 100px; }
+  min-height: 100px; */}
   .item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
     position: absolute;
     top: 10px;
@@ -6703,8 +6705,8 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-assertive {
-    border-color: #e42012;
-    background-color: #ef473a;
+    border-color: #0188CC;
+    background-color: #0188CC;
     color: #fff; }
     .button.button-assertive:hover {
       color: #fff;
@@ -6722,9 +6724,9 @@ progress {
       border-color: transparent;
       background: none; }
     .button.button-assertive.button-outline {
-      border-color: #ef473a;
+      border-color: #0188CC;
       background: transparent;
-      color: #ef473a; }
+      color: #0188CC; }
       .button.button-assertive.button-outline.active, .button.button-assertive.button-outline.activated {
         background-color: #ef473a;
         box-shadow: none;

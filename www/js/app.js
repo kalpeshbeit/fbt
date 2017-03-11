@@ -1,17 +1,163 @@
 // Ionic Starter App
 // 'app' is the name of this angular module (also set in a <body> attribute in index.html)
-angular.module('app', [
-    'ionic', 'ngCordova','ngCordovaOauth', 'pascalprecht.translate',
-    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel','sw2.ionic.password-show-hide'
-])
 
-        .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup) {
+angular.module('app', [
+    'ionic', 'ngCordova','ngCordovaOauth','ngOpenFB', 'pascalprecht.translate','ionic-ratings',
+    'app.controllers', 'app.filters', 'ionicLazyLoad','slickCarousel'	,'sw2.ionic.password-show-hide'
+])
+.constant('shopSettings',{
+   
+   
+   payPalSandboxId : 'patel.kalpeshbeit2010-facilitator@gmail.com',
+   payPalProductionId : 'production id here',
+   payPalEnv: 'PayPalEnvironmentSandbox',   // for testing  production for production
+   payPalShopName : 'MyShopName',
+   payPalMerchantPrivacyPolicyURL : 'url to policy',
+   payPalMerchantUserAgreementURL : ' url to user agreement '
+   
+   
+   
+    
+})
+.factory('PaypalService', ['$q', '$ionicPlatform', 'shopSettings', '$filter', '$timeout', function ($q, $ionicPlatform, shopSettings, $filter, $timeout) {
+
+
+
+        var init_defer;
+        /**
+         * Service object
+         * @type object
+         */
+        var service = {
+            initPaymentUI: initPaymentUI,
+            createPayment: createPayment,
+            configuration: configuration,
+            onPayPalMobileInit: onPayPalMobileInit,
+            makePayment: makePayment
+        };
+
+
+        /**
+         * @ngdoc method
+         * @name initPaymentUI
+         * @methodOf app.PaypalService
+         * @description
+         * Inits the payapl ui with certain envs. 
+         *
+         * 
+         * @returns {object} Promise paypal ui init done
+         */
+        function initPaymentUI() {
+
+            init_defer = $q.defer();
+            $ionicPlatform.ready().then(function () {
+
+                var clientIDs = {
+                    "PayPalEnvironmentProduction": shopSettings.payPalProductionId,
+                    "PayPalEnvironmentSandbox": shopSettings.payPalSandboxId
+                };
+                PayPalMobile.init(clientIDs, onPayPalMobileInit);
+            });
+
+            return init_defer.promise;
+
+        }
+
+
+        /**
+         * @ngdoc method
+         * @name createPayment
+         * @methodOf app.PaypalService
+         * @param {string|number} total total sum. Pattern 12.23
+         * @param {string} name name of the item in paypal
+         * @description
+         * Creates a paypal payment object 
+         *
+         * 
+         * @returns {object} PayPalPaymentObject
+         */
+        function createPayment(total, name) {
+                
+            // "Sale  == >  immediate payment
+            // "Auth" for payment authorization only, to be captured separately at a later time.
+            // "Order" for taking an order, with authorization and capture to be done separately at a later time.
+            var payment = new PayPalPayment("" + total, "EUR", "" + name, "Sale");
+            return payment;
+        }
+        /**
+         * @ngdoc method
+         * @name configuration
+         * @methodOf app.PaypalService
+         * @description
+         * Helper to create a paypal configuration object
+         *
+         * 
+         * @returns {object} PayPal configuration
+         */
+        function configuration() {
+            // for more options see `paypal-mobile-js-helper.js`
+            var config = new PayPalConfiguration({merchantName: shopSettings.payPalShopName, merchantPrivacyPolicyURL: shopSettings.payPalMerchantPrivacyPolicyURL, merchantUserAgreementURL: shopSettings.payPalMerchantUserAgreementURL});
+            return config;
+        }
+
+        function onPayPalMobileInit() {
+            $ionicPlatform.ready().then(function () {
+                // must be called
+                // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
+                PayPalMobile.prepareToRender(shopSettings.payPalEnv, configuration(), function () {
+
+                    $timeout(function () {
+                        init_defer.resolve();
+                    });
+
+                });
+            });
+        }
+
+        /**
+         * @ngdoc method
+         * @name makePayment
+         * @methodOf app.PaypalService
+         * @param {string|number} total total sum. Pattern 12.23
+         * @param {string} name name of the item in paypal
+         * @description
+         * Performs a paypal single payment 
+         *
+         * 
+         * @returns {object} Promise gets resolved on successful payment, rejected on error 
+         */
+        function makePayment(total, name) {
+
+
+            var defer = $q.defer();
+            total = $filter('number')(total, 2);
+            $ionicPlatform.ready().then(function () {
+                PayPalMobile.renderSinglePaymentUI(createPayment(total, name), function (result) {
+                    $timeout(function () {
+                        defer.resolve(result);
+                    });
+                }, function (error) {
+                    $timeout(function () {
+                        defer.reject(error);
+                    });
+                });
+            });
+
+            return defer.promise;
+        }
+
+        return service;
+    }])
+        .service('User_data', function () {
+            return {};
+        })
+        .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup,ngFB) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default
                 /*if (window.cordova && window.cordova.plugins.Keyboard) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 }*/
-                
+                ngFB.init({appId: '419763941691558'});
                 if (window.StatusBar) {
                     // org.apache.cordova.statusbar required
                     StatusBar.styleDefault();
@@ -61,6 +207,43 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.orderDetails', {
+                        url: '/orderDetails', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/orderDetails.html',
+                                controller: 'orderDetailsCtrl'
+                            }
+                        }
+                    })
+					.state('app.paypal', {
+                        url: '/paypal', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/paypal.html',
+                                controller: 'paypalCtrl'
+                            }
+                        }
+                    })
+					.state('app.checkout', {
+                        url: '/checkout', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/checkout.html',
+                                controller: 'checkoutCtrl'
+                            }
+                        }
+                    })
+					.state('app.orderdata', {
+                        url: '/orderdata/:orderid', //附近�?销商列表
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/orderdata.html',
+                                controller: 'orderdataCtrl'
+                            }
+                        }
+                    })
+					
                     .state('app.searchAgent', {
                         url: '/searchAgent', //附近�?销商
                         views: {
@@ -120,7 +303,8 @@ angular.module('app', [
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/address_book.html',
-                                controller: 'address_bookCtrl'
+                                controller: 'address_bookCtrl',
+                                cache: false
                             }
                         }
                     })
@@ -133,6 +317,24 @@ angular.module('app', [
                             }
                         }
                     })
+					.state('app.about_us', {
+                        url: '/about_us',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/about_us.html',
+                                controller: 'about_usCtrl'
+                            }
+                        }
+                    })
+                    .state('app.editaddressbook', {
+                        url: '/editaddressbook',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/editaddressbook.html',
+                                controller: 'editaddressbookCtrl'
+                            }
+                        }
+                    })
                     .state('app.my_account', {
                         url: '/my_account',
                         views: {
@@ -142,6 +344,15 @@ angular.module('app', [
                             }
                         }
                     })
+                    .state('app.leave_feedback', {
+                        url: '/leave_feedback',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/leave_feedback.html',
+                                controller: 'leave_feedbackCtrl'
+                            }
+                        }
+                    })					
                     .state('app.CategoryList', {
                         url: '/categoryList/:categoryid/:name',
                         views: {
@@ -287,4 +498,10 @@ function explode(sep, string) {
 
 function urlencode(data) {
     return encodeURIComponent(data);
+}
+
+window.onload = function(){
+ if ( Config.getLocale()=='arabic') {
+	 document.getElementById('lang_css').href = 'css/lang_sa.css';
+ }
 }

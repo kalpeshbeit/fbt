@@ -1,0 +1,22 @@
+<ion-view view-title="{{'wishlist' | translate}}">
+<ion-content overflow-scroll="false">
+    <div class="list padding">
+        <div ng-repeat="wishlist_detail_data in wishlist_detail">
+            <a href="#app/productDetail/{{wishlist_detail_data.entity_id}}">
+                <div>
+                    <img style="width:70px" src="{{wishlist_detail_data.image_url}}">
+                </div>
+                <div>
+                    {{wishlist_detail_data.name}}
+                </div>
+            </a>
+<!--            <a href="#" ng-click="sharewithfriend()">
+                share
+            </a>-->
+            <a href="#" ng-click="doDeletewishlist(wishlist_detail_data.entity_id)">
+                Delete
+            </a>
+        </div>
+    </div>
+</ion-content>
+</ion-view>

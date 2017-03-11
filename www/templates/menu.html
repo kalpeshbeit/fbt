@@ -61,13 +61,13 @@
           
         <span class="icon icon-close pull-right menu-close"></span>
         </ion-header-bar>
-        <ion-content class="menus-content menu-h-set">
+        <ion-content class="menus-content menu-h-set langchanger">
         <a nav-clear menu-close href="#"
                    class="button button-full button-light icon icon-left icon-deal">
-                    <span class="padding-horizontal">{{'Daily deal' | translate}}</span>
+                    <span class="padding-horizontal">{{'daily_deals' | translate}}</span>
         </a>
         <div class="item item-divider"></div>
-         <h3 class="menu-title">SHOP FOR</h3>
+         <h3 class="menu-title">{{'shop_for' | translate}}</h3>
             <ion-list>
                 <a nav-clear menu-close href="#app/home"
                    ng-class="{'button-assertive': getActiveClass(0)}"
@@ -102,32 +102,41 @@
                 endæ³¨é‡Š -->
                 <div class="item item-divider"></div>
                 
-                <h3 class="menu-title">OTHER OPTIONS</h3>
+                <h3 class="menu-title">{{'other_option' | translate}}</h3>
                 <a nav-clear menu-close href="#app/contact"
                    class="button button-full button-light icon icon-left icon-contct">
-                    <span class="padding-horizontal">{{'Contact Us' | translate}}</span>
+                    <span class="padding-horizontal">{{'contact_us' | translate}}</span>
+                </a>
+                <a nav-clear menu-close href="#app/about_us"
+                   class="button button-full button-light icon icon-left icon-info before-remove">
+                    <span class="padding-horizontal">{{'about_us' | translate}}</span>
+                </a>
+
+                <a nav-clear menu-close href="#app/paymenttest"
+                   class="button button-full button-light icon icon-left icon-contct before-remove">
+                    <span class="padding-horizontal">{{'paymenttest' | translate}}</span>
                 </a>
                 
-                <a menu-toggle="left" href="#app/setting" class="item icon icon-left icon-setting">
+                <a menu-toggle="left" href="#app/setting" class="button button-full button-light icon icon-left icon-setting">
                     <span class="padding-horizontal">{{'settings' | translate}}</span>
                 </a>
                 <a ng-if="!!user" nav-clear menu-close href="#app/my_account"
                    class="button button-full button-light icon icon-left icon-my-acc">
-                    <span class="padding-horizontal">{{'My Account' | translate}}</span>
+                    <span class="padding-horizontal">{{'my_account' | translate}}</span>
                 </a>
                 <a ng-if="!!user" ng-click="doLogout();menuClose()"
-                   class="item icon icon-left icon-logout">
+                   class="button button-full button-light icon icon-left icon-logout">
                     <span class="padding-horizontal">{{'logout' | translate}}</span>
                 </a>
                 
                  <div class="item item-divider"></div>
                  
                 <a ng-if="!isIOS" ng-click="showExit()"
-                   class="item icon icon-left icon-exit">
+                   class="button button-full button-light icon icon-left icon-exit">
                     <span class="padding-horizontal">{{'exit' | translate}}</span>
                 </a>
                 <a ng-show="0" ng-click="menuClose();welcome()"
-                   class="item icon icon-left ion-android-exit">
+                   class="button button-full button-light icon icon-left ion-android-exit">
                     <span class="padding-horizontal">{{'welcome' | translate}}</span>
                 </a>
             </ion-list>

@@ -1,3 +1,73 @@
+<style>
+.slick-container {
+  width: 95%;
+  margin: auto;
+  padding: 5px;
+}
+
+.slick-item {}
+
+.slick-item img {
+  margin: auto;
+}
+.product-inner {  border: solid 1px #E6E6E6;margin: 0 5px;border-radius: 5px;text-align: center !important;padding: 2px 0;overflow: hidden;
+box-shadow: 1px 1px 3px #E6E6E6;}
+
+.prod_slider img {
+    /*height: 150px;*/
+	margin-top: 2px !important;
+}
+.product-name.ng-binding {
+    font-size: 11px;
+    color: #777;
+}
+.price-box .price, .category-products .product .price-box .price {
+    color: #06C;font-size:90%}
+	.new-lbl {
+   background: #009900;
+color: #FFF;
+padding: 0 4px;
+margin:3px;
+border-radius: 3px !important;
+}.p_lbl {
+    text-align: right;
+}
+.p_footer img {
+    width: auto !important;
+}
+.img_left{}
+.img_center{text-align:center}
+.img_right{text-align:right}
+.p_footer,.p_footer img{text-align:center !important}
+.p_footer span {
+    width: 33% !important;
+    float: left;
+    text-align: center !important;
+	background:none !important;
+}
+.p_rating img {
+    width: 66%;
+    height: 50%;
+}
+.bar.bar-assertive.bar-footer{background:#FFF !important}
+.bar.bar-assertive{background-color:#FFF !important;border:none !important}
+.bar-assertive .button {
+    border-color: #CCC;    margin-right: 3px;
+    background-color:#CCC;
+    color: #0088CC;
+}
+.home-header{min-height:115px;}
+.home-content{margin-top:70px;}
+.h-bar-stable {    width: 100%;}
+.h-bar1 {    width: 20%;    float: left;margin-top: 9px;}
+.h-bar2 {    width: 60%;    float: left;}
+.h-bar3 {    width: 20%;    float: left;margin-top: 10px;text-align:right}
+.h-search {    width: 94%;    float: left;margin: 0 3%;}
+.mycbtn {    top: 16px;     right: 12px; }
+.item.item-input {    border: none;    border-radius: 5px;}
+.bar.bar-light {    background: #E5E5E5;border-bottom: 3px solid #0487CF;}
+.products-grid .product {    min-height: 288px !important;}
+</style>
 <ion-view view-title="{{listTitle | translate}}">
     <ion-content scroll="false" overflow-scroll="true">
         <ion-content lazy-scroll style="height:100%" overflow-scroll="true" direction="y" locking="true">
@@ -5,51 +75,79 @@
                     pulling-text="{{'pull_to_refresh' | translate}}"
                     on-refresh="doRefresh()">
             </ion-refresher>
-            <ion-list class="products-grid {{lineClass}}">
+            <ion-list class="products-grid prodlist">
                 <div class="product" collection-repeat="product in lists">
                     <div class="product-inner">
-                        <a href="#app/productDetail/{{product.entity_id}}">
-                            <div class="product-image">
-                                <img image-lazy-src="{{product.image_url}}"
-                                     lazy-scroll-resize="true"
-                                     image-lazy-loader="lines">
-                            </div>
-                        </a>
-
-                        <div class="product-info">
-                            <div class="product-name">
-                                {{product.name}}
-                            </div>
-
-                            <div  class="product-price">
-                                <div class="price-box">
-                                  <span ng-if="product.discount != null" class="special-price">
-                                      <span class="special-price">
-                                          <span class="price">
-                                              {{product.symbol}}{{product.final_price_with_tax}}
-                                          </span>
-                                          &nbsp;
-                                          <span class="old-price">
-                                              {{product.regular_price_with_tax | number:0}}
-                                          </span>
-                                      </span>
-                                  </span>
-                                  <span ng-if="product.discount == null" class="special-price">
-                                      <span class="special-price">
-                                          <span class="price">
-                                              {{product.symbol}}{{product.regular_price_with_tax}}
-                                          </span>
-                                      </span>
-                                  </span>
-                                  <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
-                                      <span class="price">
-                                          {{product.discount}}
-                                      </span>
-                                  </span>
-                                </div>
+                <div class="p_lbl"><span class="new-lbl">New</span></div>
+            <a href="#app/productDetail/{{product.entity_id}}">
+                <div class="product-image">
+                    <img image-lazy-src="{{product.image_url}}"
+                         lazy-scroll-resize="true"
+                         image-lazy-loader="lines">
+                </div>
+            </a>
+            
+            <div class="product-info">
+                <div class="product-name">
+                    {{product.name}}
+                </div>
+            	<div class="p_rating">                
+                            <div class="ratings">
+                                <div class="rating-box">
+                                  <div class="rating" style="width:{{product.ratings}}%;"></div>
+                                </div>                    
                             </div>
                         </div>
+            
+                <div  class="product-price">
+                    <div class="price-box">
+                      <span ng-if="product.discount != null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.final_price_with_tax}}
+                              </span>
+                              &nbsp;
+                              <span class="old-price">
+                                  {{product.regular_price_with_tax | number:0}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-if="product.discount == null" class="special-price">
+                          <span class="special-price">
+                              <span class="price">
+                                  {{product.symbol}}{{product.regular_price_with_tax}}
+                              </span>
+                          </span>
+                      </span>
+                      <span ng-show="0" ng-if="product.discount!=null" class="discount {{price_percent_class}}">
+                          <span class="price">
+                              {{product.discount}}
+                          </span>
+                      </span>
                     </div>
+                </div>
+                
+                <div class="p_footer">
+            	<span class="img_left">
+                <a href="#" ng-click="sharewithfriend()">
+            	<img src="img/share-25.png" height="25" width="25" /></a>
+                </span>
+                <span class="img_center">
+                	<div ng-init="myVar = '#app/productDetail/'">
+                        <a ng-href="{{myVar}}{{product.entity_id}}">
+                            <img class="" src="img/cart-32.png" height="25" width="25" />
+                         </a>
+                    </div>        
+                </span>
+                <span class="img_right">
+                	<div ng-repeat="todo in wishlist_detail | filter:{entity_id:product.entity_id}">
+                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
+                    </div>
+                    <img class="save-img product_entity_id"  id='wishlist_{{product.entity_id}}' src="img/save-25.png" height="25" width="25"  ng-click="doWhishlistAdd(product.entity_id)" />
+                </span>
+            </div>
+            </div>
+            </div>
                 </div>
             </ion-list>
             <ion-infinite-scroll

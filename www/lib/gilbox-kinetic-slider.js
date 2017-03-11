@@ -32,6 +32,7 @@
             })();
           },
           getTouchPoint: function(event) {
+
             var e;
             if (event.touches != null) {
               e = event.touches[0];

@@ -1,0 +1,137 @@
+<style>
+.list{color:#A4A4A4}
+.obot22 {border: solid 1px #0188CC;
+padding: 3px 7%;color: #0188CC;border-radius: 10px;font-size: 15px;}
+.od_left{float:left;margin-top: 5px;}.od_right{float:right} 
+.c_box b {  color:#333333  	}
+.c_box{border: 1px solid #E2E2E2;padding: 8px 8px 7px;margin: 10px 0;
+font-size: 16px;color: #777777;box-shadow: 0.5px 1px 1px #999;overflow:hidden}
+.item {border:none;    font-size: 16px;    border-bottom: solid 2px #2796CE;padding:0px !important}
+input::-moz-placeholder, textarea::-moz-placeholder {    color: #333 !important;}
+.binp{color: #777;
+font-weight: inherit;}
+.rbtn{margin: 4px 5px 0 0 !important;float: left;}
+.btn_cnt{background: #008BD5;border: none;color: #FFF;padding: 5px 20px;font-size: 30px;}
+.item-stable.item.ng-binding {    border: none;    margin: 0;}
+.item-stable.item.ng-binding.active {    background: none;}
+.ng-pristine.ng-valid {    width: 100%;}
+.ion-chevron-right::before{float:right;margin-top: 3px;}
+.ion-chevron-down::before{float:right;margin-top: 3px;}
+.item-accordion.item.ng-binding {    border: none;}
+.row{display:block !important}
+.item.item-stable,.title {font-weight: bold; color:#333333}
+.od_full.ng-binding {    margin-top: 10px;}
+
+</style>
+<ion-view view-title="{{'my_oerder_detail' | translate}}" >
+<ion-content overflow-scroll="false">
+    <div class="list padding">  
+			
+            
+            
+           <ion-list class="disable-user-behavior">
+            <div class="list">
+
+
+            	<div class="od_left title">Order No : {{order.real_order_id}}</div>
+                <div class="od_right obot22">{{order.status}}</div>
+                <div style="clear:both"></div>
+                <div class="od_full">Placed on {{order.date_order}}</div>
+                	<div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(0)" ng-class="{active: isGroupShown(0)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(0) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'item_ordered' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(0)">
+                    	<div class="row">
+                        	<br />
+	                    	<div class="" ng-repeat="items in order.items_data">                            	
+                                <span style="color:#949494;font-size:22px;">{{items.name}}</span><br />           	
+                                {{items.price}} / {{items.qty_ordered}} items<br />
+                                <b>Subtotal : </b>{{items.price}}<br />
+                            </div> 	
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(1)" ng-class="{active: isGroupShown(1)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(1) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'shippping_address' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(1)">
+                        <div class="row">
+                        	<br />
+                            <p><b>{{'first_name' | translate}} :</b> {{order.shippingAddress.firstname}}</p>
+                            <p><b>{{'middle_name' | translate}} :</b> {{order.shippingAddress.middlename}}</p>
+                            <p><b>{{'last_name' | translate}} :</b> {{order.shippingAddress.lastname}}</p>
+                            <p><b>{{'email' | translate}} :</b> {{order.shippingAddress.email}}</p>
+                            <p><b>{{'telephone' | translate}} :</b> {{order.shippingAddress.telephone}}|</p>
+							<p><b>{{'Address' | translate}} :</b><br />
+                            	{{order.shippingAddress.street}} {{order.shippingAddress.city}}
+                                {{order.shippingAddress.region}} {{order.shippingAddress.postcode}}</p>
+                        </div>
+                    </ion-item>                      
+                </div>
+                
+        	        <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(2)" ng-class="{active: isGroupShown(2)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(2) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'billing_address' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(2)">
+                    	<div class="row">
+                        	<br />
+                        	<p><b>{{'first_name' | translate}} :</b> {{order.billingAddress.firstname}}</p>
+                            <p><b>{{'middle_name' | translate}} :</b> {{order.billingAddress.middlename}}</p>
+                            <p><b>{{'last_name' | translate}} :</b> {{order.billingAddress.lastname}}</p>
+                            <p><b>{{'email' | translate}} :</b> {{order.billingAddress.email}}</p>
+                            <p><b>{{'telephone' | translate}} :</b> {{order.billingAddress.telephone}}</p>
+							<p><b>{{'Address' | translate}} :</b><br />
+                            	{{order.billingAddress.street}} {{order.billingAddress.city}}
+                                {{order.billingAddress.region}} {{order.billingAddress.postcode}}</p>
+    	                </div>
+                    </ion-item>                      
+                </div>
+    	            
+	            <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(3)" ng-class="{active: isGroupShown(3)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(3) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'shipping_method' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(3)">
+                    	<div class="row">
+                        	<br />
+	                    	Shipping
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+                <div ng-repeat="group in groups" class="c_box c_box2 langchanger" style="">
+                    <ion-item class="item-stable item ng-binding" ng-click="toggleGroup(4)" ng-class="{active: isGroupShown(4)}" style="">
+                    <i class="pdetail_plus_icon_hr icon icon ion-chevron-down" ng-class="isGroupShown(4) ? 'ion-chevron-down' : 'ion-chevron-right'" style=""></i>
+                    &nbsp;
+                    {{'payment_method' | translate}}
+                    </ion-item>
+                    <ion-item class="item-accordion item ng-binding ng-hide" ng-repeat="item in group.items" ng-show="isGroupShown(4)">
+                    	<div class="row">
+                        	<br />
+	                    	Paypal
+    	                </div>
+                    </ion-item>                      
+                </div>
+                
+
+                
+                                                                                
+            </div>                            
+        </ion-list>                        
+        
+        
+    </div>
+</ion-content>
+</ion-view>

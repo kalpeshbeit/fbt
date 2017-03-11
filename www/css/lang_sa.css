@@ -1,0 +1,30 @@
+.menus-content .button{ text-align:right !important;}
+h3.menu-title{ padding-right:12px !important;}
+.langchanger {
+  direction: rtl; 
+}
+.p_title{
+	 direction: rtl; 
+}
+pdetail_colsize{
+    overflow: hidden;
+    border-top: solid 2px #E6E6E6;
+    padding: 0 15px;
+}
+.col-size{
+	 direction: rtl; 
+}
+.pdetail_plus_icon_hr{
+    float: left;
+    margin-left: 10px !important;
+} 
+.contact_lam_hr{
+    margin-right: 10px !important;
+} 
+.myaccount_hr{
+    text-align: right !important;
+    direction:rtl;
+}
+.input-label-pd{
+    float:right !important;
+}

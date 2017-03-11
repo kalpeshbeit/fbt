@@ -10,8 +10,11 @@ function Service($rootScope, $http, $ionicPopup) {
         menus: '/restconnect/?cmd=menu',
         products: '/restconnect/',
         login: '/restconnect/customer/login',
+        editAddress: '/restconnect/customer/editAddress',
+        deleteAddress: '/restconnect/customer/deleteAddress',
         logout: '/restconnect/customer/logout',
         register: '/restconnect/customer/register',
+        socialLogin: '/restconnect/customer/socialLogin',
         search: '/restconnect/search',
         certGet: '/clnews/api/article',
         getwishlist: '/restconnect/wishlist/getwishlist',
@@ -19,14 +22,23 @@ function Service($rootScope, $http, $ionicPopup) {
         searchAdvField: '/restconnect/searchadv/getfield',
         searchAdv: '/restconnect/searchadv/index',
         searchAgent: '/storelocator/index/city',
+        //order: '/restconnect/products/test2',
+        order: '/restconnect/products/myOrderList',
+		myOrderDetail: '/restconnect/products/myOrderDetail',
+		contactUs: 'restconnect/customer/contactUs',
         productDetail: '/restconnect/products/getproductdetail',
+        productoptions: '/restconnect/products/getproductoptions',
+		rateAndReview: '/restconnect/products/rateAndReview',
         addwishlist: '/restconnect/wishlist/addToWishlist',
+        removeWishlist: '/restconnect/wishlist/removeWishlist',
         productImg: '/restconnect/products/getPicLists',
         productOption: '/restconnect/products/getcustomoption',
         cart: '/restconnect/cart/getCartInfo',	//获�?�购物车内容
         cartGetQty: '/restconnect/cart/getQty',	//
         cartGetTotal: '/restconnect/cart/getTotal',	//
-        cartAdd: '/restconnect/cart/add'	//直接post到这个接�?�就返回�?�数
+        cartAdd: '/restconnect/cart/add',	//直接post到这个接�?�就返回�?�数
+		 removecart: '/restconnect/cart/remove',
+		 paymentmethods: '/restconnect/checkout/getPayMethodsList',
     }, showError = false;
 
     $rootScope.service = {
@@ -43,7 +55,7 @@ function Service($rootScope, $http, $ionicPopup) {
    }else{
     params.___store = Config.getLocale();
    }
-			console.log(params);
+			//console.log(params);
 		//params+='&__store='+ Config.getLocale();
             var url = Config.baseUrl  + api[key] ;
 

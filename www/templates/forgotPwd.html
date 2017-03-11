@@ -1,23 +1,30 @@
 <ion-view cache-view="false" view-title="{{'forgot_password' | translate}}">
     <ion-content overflow-scroll="false">
         <div class="list padding">
-            <h3> &nbsp; </h3>
-            <h3> 请将您的手机及帐号信息发邮件至 1442382512@qq.com </h3>
-            <form ng-show="0">
+            <h3 class="">{{'reset_password' | translate}}</h3>
+            <!--<h3> è¯·å°†æ‚¨çš„æ‰‹æœºå�Šå¸�å�·ä¿¡æ�¯å�‘é‚®ä»¶è‡³ 1442382512@qq.com </h3>-->
+            <form>
                 <label class="item item-input">
                     <span class="input-label">{{'email' | translate}}*</span>
                     <input autofocus class="padding-left" type="email" ng-model="pwdData.email">
                 </label>
+                <!--
                 <div class="padding">
                     {{'wait_tip' | translate}}
-                </div>
+                </div>-->
             </form>
         </div>
         <div class="padding">
-            <button type="reset" class="button button-outline button-assertive" ng-click="myBack()">{{'back' | translate}}</button>
             <div class="button-bar">
-                <button type="submit" ng-show="0" class="button  button-assertive" ng-click="getPwd()">{{'submit' | translate}}</button>
+                <button type="submit" class="button  button-assertive" ng-click="getPwd()">{{'reset_password' | translate}}</button>
             </div>
+       		
+            <!--
+            <div class="button-bar">
+            <button type="reset" ng-show="0" class="button button-outline button-assertive" ng-click="myBack()">{{'back' | translate}}</button>
+            </div>
+       		-->
+            
         </div>
     </ion-content>
 </ion-view>

@@ -20,12 +20,11 @@
             <div class="product-name">
                 {{product.name}}
             </div>
-        	<div class="p_rating">
-                <div ng-if="{{product.ratings}} == 0">
-                    <div class=""><img src="img/0.png" height="23" width="143" /></div>
-                </div>
-                <div ng-else-if="{{Math.ceil(product.ratings / 20)}} != 0">
-                    <div class=""><img src="img/{{Math.ceil(product.ratings / 20)}}.png" height="23" width="143" alt="ratings" /></div>	
+        	<div class="p_rating">                
+                <div class="ratings">
+                    <div class="rating-box">
+                      <div class="rating" style="width:{{product.ratings}}%;"></div>
+                    </div>                    
                 </div>
             </div>	
             <div  class="product-price">
@@ -56,17 +55,29 @@
                 </div>
             </div>
             
-            <div class="p_footer">
-            	<span class="img_left">
-            	<img src="img/share-25.png" height="25" width="25" />                
-                </span>
-                <span class="img_center">
-                <img class="" src="img/cart-25.png" height="25" width="25" />
+           <div class="p_footer">
+                            <span class="img_left">
+                            <a href="#" ng-click="sharewithfriend()">
+                                <img src="img/share-25.png" height="25" width="25" />                
+                            </a>
+                            </span>
+                            <span class="img_center">
+                	<div ng-init="myVar = '#app/productDetail/'">
+                            <a ng-href="{{myVar}}{{product.entity_id}}">
+                                <img class="" src="img/cart-25.png" height="25" width="25" />
+                            </a>
+                    </div>        
                 </span>
                 <span class="img_right">
-                <img class="" src="img/save-25.png" height="25" width="25" />
+                	 <div ng-if="true == product.is_in_wishlist">
+                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
+                     </div>
+                     
+                     <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                     </div>                     
                 </span>
-            </div>
+                        </div> 
             
         </div>
                     </div>
