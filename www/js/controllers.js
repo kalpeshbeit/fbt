@@ -2012,10 +2012,11 @@ angular.module('app.controllers', [])
                                             paymethod:'paypal_express',
                                             paymentData:response
                                         };
+										 alert(JSON.stringify(response));
                                         $rootScope.service.get('placeorder', params, function (res) {
                                             console.log('placeOrder:');
                                             console.log(res);
-
+ alert(JSON.stringify(res));
                                         });
                                         removeStorage(quoteid);
                                         $location.path('/app/home');
@@ -2142,9 +2143,10 @@ angular.module('app.controllers', [])
                     shipping_address: shipping_address,
                     billing_address:billing_address
                 };
-                
+                alert(JSON.stringify(params));
                 $rootScope.service.get('addquote', params, function (results) {
                       setStorage('quoteid', results.quoteid);
+					  alert(JSON.stringify(results));
 					  $state.go("app.paypal");return;
                     
                 });                
