@@ -17,7 +17,8 @@
     table tr td{
         border: 2px solid #dcdcdc;
         width:10%;
-    }
+            padding: 2px;
+    }table tr:first-child td,table tr:last-child td{font-weight: bold}
 	.btn_cnt{background: #008BD5;border: none;padding: 10px;font-size: 30px;text-decoration: none !important;width: 100%;float: left;
 color:#FFF}
 </style>
@@ -269,6 +270,9 @@ color:#FFF}
                                         <td>
                                             {{(order_data.item_price * order_data.qty)}}
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" style="height:3px !important;padding:0px !important"></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3">Subtotal</td>

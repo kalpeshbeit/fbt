@@ -24,6 +24,7 @@ function Service($rootScope, $http, $ionicPopup) {
         searchAgent: '/storelocator/index/city',
         //order: '/restconnect/products/test2',
         order: '/restconnect/products/myOrderList',
+        placeorder: 'restconnect/cart/placeOrder',
 		myOrderDetail: '/restconnect/products/myOrderDetail',
 		contactUs: 'restconnect/customer/contactUs',
         productDetail: '/restconnect/products/getproductdetail',
@@ -37,6 +38,7 @@ function Service($rootScope, $http, $ionicPopup) {
         cartGetQty: '/restconnect/cart/getQty',	//
         cartGetTotal: '/restconnect/cart/getTotal',	//
         cartAdd: '/restconnect/cart/add',	//直接post到这个接�?�就返回�?�数
+		 addquote: 'restconnect/cart/addQuote',
 		 removecart: '/restconnect/cart/remove',
 		 paymentmethods: '/restconnect/checkout/getPayMethodsList',
     }, showError = false;

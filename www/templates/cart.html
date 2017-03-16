@@ -25,7 +25,8 @@ color: #777;font-weight: bold;margin: 20px 0;}
 .item_right2 {    width: 50%;    float: left;    text-align: right;}
 .col2{color:#383838 !important;border:none !important}
 .iop{font-size:13px;float: left;width: 50%;}
-.iop2{float: left;width: 50%;border-left: 2px solid #E2E2E2}
+.iop2{float: left;width: 50%;}
+/*.iop2{float: left;width: 50%;border-left: 2px solid #E2E2E2}*/
 .iop_top {    margin-top: 10px;}
 .qty-holder { float: right;    margin: 0 5px 0;}
 .input-number-decrement {    border-right: none;    border-radius: 4px 0 0 4px;    float: left;}
@@ -47,7 +48,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
 	                <h2>{{item.item_title}}</h2>
                     <div>
                         <span class="price">
-                            {{symbol}}{{item.item_price | number:0}}&nbsp;&nbsp;x&nbsp;{{item.qty}}
+                            {{item.currency+ ' '}}{{item.item_price | number:0}}&nbsp;&nbsp;x&nbsp;{{item.qty}}
 	                    </span>
                 	</div>
                     
@@ -61,10 +62,10 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
                         <div class="iop2">
                         	<div class="qty-holder">
                             <span style="font-size:13px"> {{'qty' | translate}} :</span> <br />
-                             <span class="input-number-decrement" ng-click="qtyMinus()">-</span>
-                              <input class="input-number" type="text" name="qty" id="qty"
+                             <span class="input-number-decrement" ng-click="qtyMinus('qty_{{item.cart_item_id}}')">-</span>
+                              <input class="input-number" style="display:initial !important;height: 20px !important;width: 20px !important;margin-left: 10px !important"  type="text" name="qty" id="qty_{{item.cart_item_id}}"
                                      ng-model="qty" min="1" max="99" title="Qty">
-                              <span class="input-number-increment" ng-click="qtyAdd()">+</span>                             
+                              <span class="input-number-increment" ng-click="qtyAdd('qty_{{item.cart_item_id}}')">+</span>                             
                           </div>
                         </div>
                         
@@ -76,7 +77,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
 		                <a class="first" href="#" ng-click="doRemoveFromCart(item.cart_item_id)">Remove</a>
 					</div>
                     <div class="item_50w">                                          
-	    	            <a class="last" href="#" ng-click="doaddwishlistformcart(item.item_id, item.product_id)">Move To wishlist</a>
+	    	            <a class="last" href="#" ng-click="doaddwishlistformcart(item.cart_item_id, item.item_id)">Move To wishlist</a>
 					</div>                        
                 </div>    
             </div>                        
@@ -137,5 +138,7 @@ color: #444;    text-align: center;    font-weight: bold;    cursor: pointer;}
         <div style="text-align: center;overflow: hidden;padding: 10px;margin-bottom:65px;">
             <a class="btn_cnt2" target="_self" href="#app/home">Continue Shopping</a>
         </div>
+        <br>
+        <br>
     </ion-content>
 </ion-view>

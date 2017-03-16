@@ -70,11 +70,13 @@
                 </span>
                 <span class="img_right">
                 	 <div ng-if="true == product.is_in_wishlist">
-                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
+                            <img class="save-img product_entity_id cateprodlist_{{product.entity_id}}" rel="remove"  src="img/icon-25.png" height="25"  id='cateprodlist_{{product.entity_id}}' width="25" ng-click="toggleWishlish(product.entity_id,'cateprodlist_')"/>                             
+                        <!--<img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />-->
                      </div>
                      
                      <div ng-if="true != product.is_in_wishlist">
-                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
+                        <img class="save-img product_entity_id cateprodlist_{{product.entity_id}}" rel="add" src="img/save-25.png" id='cateprodlist_{{product.entity_id}}' height="25" width="25" ng-click="toggleWishlish(product.entity_id,'cateprodlist_')" />
+                         <!--<img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />-->
                      </div>                     
                 </span>
                         </div> 

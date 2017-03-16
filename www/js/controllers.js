@@ -14,7 +14,7 @@ angular.module('app.controllers', [])
             $scope.dynamic_menus = {};
             $rootScope.service.get('menus', {}, function (results) {
                 $scope.dynamic_menus = results;
-                console.log($scope.dynamic_menus);
+               // console.log($scope.dynamic_menus);
             });
             $scope.isIOS = ionic.Platform.isIPad() || ionic.Platform.isIOS();
 
@@ -334,10 +334,6 @@ angular.module('app.controllers', [])
             var params = {
                 user_id: u_id,
             };
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-            }
             $scope.doDeletewishlist = function (p_id) {
 				$scope.showLoading();
                 //alert(p_id);
@@ -562,19 +558,7 @@ angular.module('app.controllers', [])
                 }
             }
 
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-                //alert('swf');
-//                $cordovaSocialSharing
-//                        .share(message,null,null)
-//                        .then(function (result) {
-//                            alert("success");
-//                        }, function (err) {
-//                            alert("error");
-//                            // An error occurred. Show a message to the user
-//                        });            
-            }
+
         })
         .controller('CategoryListCtrl', function ($scope, $rootScope, $ionicPopup, $stateParams, $translate) {            
 			$scope.listTitle = {
@@ -699,44 +683,7 @@ angular.module('app.controllers', [])
 
                 $scope.hideLoading();
             };
-            $scope.sharewithfriend = function () {
-                var message = "Ebranch App";
-                $cordovaSocialSharing.share(message, null, null);
-            }
-            $scope.doWhishlistAdd = function (p_id) {
-                var u_id = getStorage('user_id');
-                var params = {
-                    product: p_id,
-                    user_id: u_id,
-                };
-                $scope.showLoading();
-                $rootScope.service.get('addwishlist', params, function (res) {
-                    console.log(res);
-                    if (res.status == 'error') {
-                        $ionicPopup.alert(
-                                {
-                                    title: 'Error',
-                                    subTitle: res.message,
-	                                okType: 'buttonhk'
-                                }
-                        );
-                        return;
-                    }
-                    if (res.status == 'SUCCESS') {
-                        $scope.hideLoading();                       
-                        $('#wishlist_'+p_id).attr('src','img/icon-25.png');
-//                        $ionicPopup.alert(
-//                                {
-//                                    title: 'success',
-//                                    subTitle: 'Successfully Add to wishlist',
-//                                    okType: 'buttonhk'
-//                                }
-//                        );
-                        $scope.items_qty = res.items_qty;
-                        return;
-                    }
-                });
-            };
+            
             $scope.doRefresh = function () {
                 getList('refresh', function () {
                     $scope.$broadcast('scroll.refreshComplete');
@@ -1052,6 +999,7 @@ angular.module('app.controllers', [])
                 $ionicSlideBoxDelegate, $ionicScrollDelegate,
                 $cordovaSocialSharing, $ionicSideMenuDelegate) {
             
+            console.log("State parames:"+$stateParams.productid);
 			$scope.showLoading();
             
 			$scope.qty = 1;
@@ -1111,6 +1059,7 @@ angular.module('app.controllers', [])
 					$scope.rate_value = rating3;
 					console.log('Selected rating is3 : ', rating3);
 			};
+
 										
             $scope.updateSlider = function () {
                 $ionicSlideBoxDelegate.$getByHandle('image-viewer').update();
@@ -1132,7 +1081,7 @@ angular.module('app.controllers', [])
             };
 			
             $rootScope.service.get('productDetail', params, function (results) {
-                console.log(results.attributeOptions.Size);
+               // console.log(results.attributeOptions.Size);
 				$rootScope.total_reviews_count=results.total_reviews_count;
 				$rootScope.reviews=results.reviews;
                 $scope.dbs = results.attributeOptions.Size;
@@ -1148,6 +1097,7 @@ angular.module('app.controllers', [])
 					$scope.selected2 = id;
               	}
                 $scope.product = results;
+                    console.log($scope.product);
                 $scope.totalPrice = +$scope.product.final_price_with_tax;
                 $scope.oldPrice = +$scope.product.regular_price_with_tax;
 
@@ -1252,10 +1202,7 @@ angular.module('app.controllers', [])
                 $scope.productImg = lists;
             });
 
-            // 分享
-            $scope.onShare = function () {
-                $cordovaSocialSharing.share($scope.product.name, $scope.product.name, '', $scope.product.url_key);
-            };
+           
 
             // 全�?幕图片
             $scope.imageFullscreen = function () {
@@ -1369,8 +1316,10 @@ angular.module('app.controllers', [])
 
             // 增加到购物车
             $scope.doCartAdd = function () {
+//                alert($stateParams.productid);
 				$scope.showLoading();
                 var queryString = $('#product_addtocart_form').formParams();
+                console.log(queryString);
                 if (!($scope.qty > 1)) {
                     $scope.qty = 1;
                 }
@@ -1396,33 +1345,7 @@ angular.module('app.controllers', [])
                     }
                 });
             };
-            $scope.doWhishlistAdd = function (p_id) {
-                var u_id = getStorage('user_id');
-                var params = {
-                    product: p_id,
-                    user_id: u_id,
-                };
-                $scope.showLoading();
-                $rootScope.service.get('addwishlist', params, function (res) {
-                    console.log(res);
-                    if (res.status == 'error') {
-                        $scope.hideLoading();
-                        $ionicPopup.alert({
-                        title: 'Error',
-                        subTitle:res.message,
-                        okType: 'buttonhk'
-                    });
-                        return;
-                    }
-                    if (res.status == 'SUCCESS') {
-                        $scope.hideLoading();
-                        $('#wishlist_hide_hp').attr('src','img/icon-28.png');
-                        $scope.items_qty = res.items_qty;
-                        return;
-                    }
-                });
-            };
-
+           
             $scope.Math = window.Math;
             $scope.groups = [];
             for (var i = 0; i < 1; i++) {
@@ -1490,10 +1413,9 @@ angular.module('app.controllers', [])
         })
 
         // home中，�?�banner，快速�?�索
-        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams) {
+        .controller('HomeCtrl', function ($scope, $rootScope, $state, $ionicSlideBoxDelegate, $timeout,$ionicPopup,$stateParams,$cordovaSocialSharing,commonFunction) {
             $scope.searchData = {};
-
-			
+           
             $rootScope.service.get('cartGetQty', {
                 product: $stateParams.productid
             }, function (res) {
@@ -1632,47 +1554,7 @@ angular.module('app.controllers', [])
                 $state.go('app.searchResult');
             };
             
-            $scope.doWhishlistAdd = function (p_id) {
-            //var p_id = $('#product_w_id').val();            
-            var u_id = getStorage('user_id');	
-			if(u_id == null || u_id == ''){
-				$ionicPopup.alert( 
-				{
-						title: 'error',
-						subTitle: 'Login first',
-						okType: 'buttonhk'
-					}
-				);		
-			}else{
-				var params = {
-					product: p_id,
-					user_id: u_id,
-				};
-				$scope.showLoading();
-				$rootScope.service.get('addwishlist', params, function (res) {
-					console.log(res);
-					if (res.status == 'error') {
-						$ionicPopup.alert( 
-						{
-								title: 'error',
-								subTitle: res.message,
-								okType: 'buttonhk'
-							}
-						);
-						//alert( res.message);
-						return;
-					}
-					if (res.status == 'success' || res.status == 'SUCCESS') {
-						$scope.hideLoading();
-						//alert($scope.translations.success+'\n\r'+ res.items_qty + ' '+ $scope.translations['items_in_cart']);
-						$('#wishlist_'+p_id).attr('src','img/icon-25.png');
-						$scope.items_qty = res.items_qty;
-						return;
-					}
-			
-            	});           
-			}
-        };
+           
             
         })
 
@@ -1821,7 +1703,7 @@ angular.module('app.controllers', [])
             });
         })
         // 购物车
-		.controller('cartCtrl', function ($scope, $rootScope, $stateParams, $timeout) {
+		.controller('cartCtrl', function ($scope, $rootScope,$state, $stateParams, $timeout,$ionicPopup) {
             // �?��?书列表选项
             $rootScope.service.get('cart', {}, function (results) {
                 var cartList = [];
@@ -1855,11 +1737,13 @@ angular.module('app.controllers', [])
 			
 			
             $scope.doRemoveFromCart = function(item_id){
+                console.log("item id is "+item_id);
                 var params = {
                     cart_item_id: item_id,
                 };
                 $scope.showLoading();
                 $rootScope.service.get('removecart',params , function (results) {
+                    console.log("results are" +results);
                     $scope.hideLoading();
                     $ionicPopup.alert({
                         title: 'Success',
@@ -1867,6 +1751,7 @@ angular.module('app.controllers', [])
                         okType: 'buttonhk'
                     });
                     $state.reload();
+                    console.log('reload completed');
                     return;
                 });
             }
@@ -1880,6 +1765,7 @@ angular.module('app.controllers', [])
                 $rootScope.service.get('addwishlist', params, function (res) {
                     console.log(res);
                     if (res.status == 'error') {
+                        $scope.hideLoading(); 
                         $ionicPopup.alert(
                                 {
                                     title: 'Error',
@@ -2096,31 +1982,67 @@ angular.module('app.controllers', [])
 					
 		})
 		
-		.controller('paypalCtrl', function ($scope, $rootScope, $sce, $stateParams,PaypalService) {
+.controller('paypalCtrl', function ($scope, $rootScope,$ionicPopup, $sce, $stateParams,PaypalService) {
+    //alert(123);
 			var u_id = getStorage('user_id');					
+			var quoteid = getStorage('quoteid');					
 			var params = {
 				customerid: u_id,
 			};
 			
-			$scope.price = 1.99;
-$scope.produit = 'Abonnement 7j';
-console.log("init paapal before");
+//			$scope.price = $rootScope.grand_total_paypal;
+			$scope.price = 1;
+                        $scope.produit = 'Ebranch Shop';
+                        console.log("init paapal before");
 			PaypalService.initPaymentUI().then(function () {
 				PaypalService.makePayment($scope.price, $scope.produit)
 				.then(function (response) {
-					console.log(response);
-					alert("success"+JSON.stringify(response));
+                                    console.log(response);
+                                    //res = JSON.stringify(response);
+                                            $ionicPopup.alert(
+                                                    {
+                                                        title: 'Paypal Success',
+                                                        subTitle: "Payment success with Id:"+response.response.id,
+                                                        okType: 'buttonhk'
+                                                    }
+                                            );
+                                        var params = {
+                                            customerid: u_id,
+                                            quoteid:quoteid,
+                                            paymethod:'paypal_express',
+                                            paymentData:response
+                                        };
+                                        $rootScope.service.get('placeorder', params, function (res) {
+                                            console.log('placeOrder:');
+                                            console.log(res);
+
+                                        });
+                                        removeStorage(quoteid);
+                                        $location.path('/app/home');
+                                                $state.go("app.home");return;
 				},function (error) {
-					alert("error"+JSON.stringify(error));
+                                            $ionicPopup.alert(
+                                                    {
+                                                        title: 'Paypal Error',
+                                                        subTitle: 'Paypal error',
+                                                        okType: 'buttonhk'
+                                                    }
+                                            );
+
+//                                alert("error"+JSON.stringify(error));
 			});
 		});
-			
+			var params = {
+				customerid: u_id,
+			};
 			
 			$rootScope.service.get('order', params, function (res) {
 				console.log(res);
 				$scope.orders = res;
 			});
 		})
+					
+		
 					
 		
 		.controller('checkoutCtrl', function ($scope, $rootScope, $sce, $state,$stateParams) {
@@ -2173,6 +2095,7 @@ console.log("init paapal before");
                     subtotal1 = subtotal1 + (value.item_price * value.qty);
                 });
                 $scope.subtotal = subtotal1;
+                $rootScope.grand_total_paypal = subtotal1; 
             });
             
 //            alert($(".biiling_rbutton").val());
@@ -2199,8 +2122,35 @@ console.log("init paapal before");
             }
             
             $scope.checkoutForm1 = function(){
+                
+                var shipping_address = {
+                    'street':$scope.registerData.street,
+                    'company':$scope.registerData.company,
+                    'telephone':$scope.registerData.postcode,
+                    'region':$scope.registerData.street,
+                    'fax':$scope.registerData.fax,
+                    'postcode':$scope.registerData.postcode,
+                    'city':$scope.registerData.city,
+                    'firstname':$scope.registerData.firstname,
+                    'lastname':$scope.registerData.lastname,
+                    'email':$scope.registerData.email};
+                var billing_address = shipping_address;
+//                var billing_address = ['street'=>shipData.street , 'company'=>shipData.company,'telephone'=>shipData.postcode,'region'=>shipData.street,'fax'=>shipData.fax,'postcode'=>shipData.postcode,'city'=>shipData.city,'firstname'=>shipData.firstname,'lastname'=>shipData.lastname,'email'=>shipData.email];
+                  
+                var params = {
+                    customerid: u_id,
+                    shipping_address: shipping_address,
+                    billing_address:billing_address
+                };
+                
+                $rootScope.service.get('addquote', params, function (results) {
+//                    console.log("add Quote:");
+//                    console.log(results);
+                      setStorage('quoteid', results.quoteid);
+                    
+                });                
+
                 $state.go("app.paypal");return;
-            
             }
             var params = {
                 customerid: u_id,

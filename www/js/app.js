@@ -156,18 +156,120 @@ angular.module('app', [
         .service('User_data', function () {
             return {};
         })
-        .run(function ($ionicPlatform, $rootScope, $http, $ionicPopup,ngFB) {
+ .factory('commonFunction', function() {
+        return {
+            foo: function() {
+                alert("I'm foo!");
+            },
+            doDeletewishlist : function (p_id,idflag,$rootScope,$ionicPopup) {
+				$rootScope.showLoading();
+               
+                 var u_id = getStorage('user_id');
+                var params = {
+                    user_id: u_id,
+                    product_id: p_id
+                };
+
+                $rootScope.service.get('removeWishlist', params, function (res) {
+                    $rootScope.hideLoading();
+
+                    $rootScope.wishlist_detail = res.data.items;
+                    angular.extend($rootScope.wishlist_detail, res.data.items);
+                    if(idflag == 'big_wishlist_'){
+                        $('.'+idflag+p_id).attr('src','img/icon-23.png');
+                    }else{
+                    $('.'+idflag+p_id).attr('src','img/save-25.png');
+                    }
+ $('.'+idflag+p_id).attr('rel','add');
+                    return;
+                });
+            },
+            doWhishlistAdd : function (p_id,idflag,$rootScope,$ionicPopup) {
+            //var p_id = $('#product_w_id').val();            
+            var u_id = getStorage('user_id');	
+			if(u_id == null || u_id == ''){
+				$ionicPopup.alert( 
+				{
+						title: 'error',
+						subTitle: 'Login first',
+						okType: 'buttonhk'
+					}
+				);		
+			}else{
+				var params = {
+					product: p_id,
+					user_id: u_id,
+				};
+				$rootScope.showLoading();
+				$rootScope.service.get('addwishlist', params, function (res) {
+					console.log(res);
+					if (res.status == 'error') {
+						$ionicPopup.alert( 
+						{
+								title: 'error',
+								subTitle: res.message,
+								okType: 'buttonhk'
+							}
+						);
+
+						return;
+					}
+					if (res.status == 'success' || res.status == 'SUCCESS') {
+						$rootScope.hideLoading();
+                                            if(idflag == 'big_wishlist_'){
+                                                $('.'+idflag+p_id).attr('src','img/icon-28.png');
+                                            }else{
+                                            $('.'+idflag+p_id).attr('src','img/icon-25.png');
+                                            }
+
+                                        
+                                        $('.'+idflag+p_id).attr('rel','remove');
+						return;
+					}
+			
+            	});           
+			}
+        }
+        };
+    })        
+        .run(function ($ionicPlatform,$rootScope,$ionicPopup,$cordovaSocialSharing, $http, $ionicPopup,$ionicLoading,ngFB,commonFunction) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default
                 /*if (window.cordova && window.cordova.plugins.Keyboard) {
                     cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 }*/
+                $rootScope.showLoading = function () {
+                $ionicLoading.show({
+                    template: '<ion-spinner icon="spiral"></ion-spinner>'
+                });
+             };
+            $rootScope.hideLoading = function () {
+                $ionicLoading.hide();
+            };
+                 $rootScope.toggleWishlish = function (p_id,idflag) {
+                     console.log(p_id);
+                  var typeWish=$('.'+idflag+p_id).attr('rel');
+                  console.log(typeWish);
+                  if(typeWish=='remove'){
+                        commonFunction.doDeletewishlist(p_id,idflag,$rootScope,$ionicPopup);
+                  }else{
+                       commonFunction.doWhishlistAdd(p_id,idflag,$rootScope,$ionicPopup);
+                  }
+                 };
+                $rootScope.sharewithfriend = function () {
+                    $rootScope.showLoading();
+                    var message = "Ebranch App";
+                    $cordovaSocialSharing.share(message, null, null);
+                    $rootScope.hideLoading();
+                };
+                 
                 ngFB.init({appId: '419763941691558'});
                 if (window.StatusBar) {
                     // org.apache.cordova.statusbar required
                     StatusBar.styleDefault();
                 }
             });
+            
             Service($rootScope, $http, $ionicPopup);
         })
 
@@ -186,6 +288,7 @@ angular.module('app', [
                         controller: 'AppCtrl'
                     })
                     .state('app.home', {
+                        cache: false,
                         url: '/home', //首页
                         views: {
                             'menuContent': {
@@ -231,6 +334,7 @@ angular.module('app', [
                         }
                     })
 					.state('app.checkout', {
+                                            cache: false,
                         url: '/checkout', //附近�?销商列表
                         views: {
                             'menuContent': {
@@ -406,6 +510,7 @@ angular.module('app', [
                     })
                     .state('app.productDetail', {
                         url: '/productDetail/:productid',
+                cache: false,
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/productDetail.html',
@@ -432,6 +537,7 @@ angular.module('app', [
                         }
                     })
                     .state('app.cart', {
+                        cache: false,
                         url: '/cart',
                         views: {
                             'menuContent': {

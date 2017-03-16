@@ -1,6 +1,7 @@
 <style>
 .slick-container {  width: 95%;  margin: auto;  padding: 5px;}
 .slick-item {}.slick-item img {  margin: auto;}
+.hr_image_div{margin-top:25px}
 .product-inner {  border: solid 1px #E6E6E6;margin: 0 5px;border-radius: 5px;text-align: center !important;padding: 2px 0;overflow: hidden;
 box-shadow: 1px 1px 3px #E6E6E6;}
 .prod_slider img {    /*height: 150px;*/	margin-top: 2px !important;}
@@ -72,7 +73,7 @@ box-shadow: 1px 1px 3px #E6E6E6;}
         
     <ion-content class='home-content'>            
       
-        <div class="hk-image-div">
+        <div class="hk-image-div hr_image_div">
         	<div class="row">
             <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_1.png"> </a></div>
             <div class="col-sm-3 col-xs-6"><a class="image-link" href="#"> <img alt="" src="http://pr.veba.co/~shubantech/ebranch/media/wysiwyg/porto/homepage/slider/05/image_2.png"> </a></div>
@@ -159,13 +160,13 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">                	                                        
-					 <div ng-if="true == product.is_in_wishlist">
-                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                     </div>
-                     
-                     <div ng-if="true != product.is_in_wishlist">
-                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
-                     </div>                    
+                    <div ng-if="true == product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="remove"  src="img/icon-25.png" height="25"  id='new_wishlist_{{product.entity_id}}' width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')"/>
+                    </div>
+
+                    <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="add" src="img/save-25.png" id='new_wishlist_{{product.entity_id}}' height="25" width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')" />
+                    </div>                    
                 </span>
             </div>
             </div>
@@ -243,13 +244,14 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">
-					<div ng-if="true == product.is_in_wishlist">
-                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                     </div>
-                     
-                     <div ng-if="true != product.is_in_wishlist">
-                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
-                     </div>                	
+                    <div ng-if="true == product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="remove"  src="img/icon-25.png" height="25"  id='new_wishlist_{{product.entity_id}}' width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')"/>
+                    </div>
+
+                    <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="add" src="img/save-25.png" id='new_wishlist_{{product.entity_id}}' height="25" width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')" />
+                    </div>                    
+
                 </span>
             </div>
             
@@ -331,13 +333,13 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">
-					<div ng-if="true == product.is_in_wishlist">
-                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                     </div>
-                     
-                     <div ng-if="true != product.is_in_wishlist">
-                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
-                     </div>                	
+                    <div ng-if="true == product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="remove"  src="img/icon-25.png" height="25"  id='new_wishlist_{{product.entity_id}}' width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')"/>
+                    </div>
+
+                    <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="add" src="img/save-25.png" id='new_wishlist_{{product.entity_id}}' height="25" width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')" />
+                    </div>                    
                 </span>
             </div>
             </div>
@@ -418,13 +420,14 @@ box-shadow: 1px 1px 3px #E6E6E6;}
                     </div>        
                 </span>
                 <span class="img_right">
-                	<div ng-if="true == product.is_in_wishlist">
-                        <img class="save-img product_entity_id"  src="img/icon-25.png" height="25" width="25" />
-                     </div>
-                     
-                     <div ng-if="true != product.is_in_wishlist">
-                        <img class="save-img product_entity_id" src="img/save-25.png" id='wishlist_{{product.entity_id}}' height="25" width="25" ng-click="doWhishlistAdd(product.entity_id)" />
-                     </div>
+                     <div ng-if="true == product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="remove"  src="img/icon-25.png" height="25"  id='new_wishlist_{{product.entity_id}}' width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')"/>
+                    </div>
+
+                    <div ng-if="true != product.is_in_wishlist">
+                        <img class="save-img product_entity_id new_wishlist_{{product.entity_id}}" rel="add" src="img/save-25.png" id='new_wishlist_{{product.entity_id}}' height="25" width="25" ng-click="toggleWishlish(product.entity_id,'new_wishlist_')" />
+                    </div>                    
+
                 </span>
             </div>
             </div>
