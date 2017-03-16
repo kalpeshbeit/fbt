@@ -2033,14 +2033,7 @@ angular.module('app.controllers', [])
 //                                alert("error"+JSON.stringify(error));
 			});
 		});
-			var params = {
-				customerid: u_id,
-			};
 			
-			$rootScope.service.get('order', params, function (res) {
-				console.log(res);
-				$scope.orders = res;
-			});
 		})
 					
 		
