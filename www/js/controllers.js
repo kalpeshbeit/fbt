@@ -2121,7 +2121,7 @@ angular.module('app.controllers', [])
                 }
             }
             
-            $scope.checkoutForm1 = function(){
+            $scope.checkoutFormQuote = function(){
                 
                 var shipping_address = {
                     'street':$scope.registerData.street,
@@ -2144,13 +2144,12 @@ angular.module('app.controllers', [])
                 };
                 
                 $rootScope.service.get('addquote', params, function (results) {
-//                    console.log("add Quote:");
-//                    console.log(results);
                       setStorage('quoteid', results.quoteid);
+					  $state.go("app.paypal");return;
                     
                 });                
 
-                $state.go("app.paypal");return;
+                
             }
             var params = {
                 customerid: u_id,
