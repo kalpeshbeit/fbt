@@ -86,7 +86,7 @@ url+='?___store='+ Config.getLocale();
                 params: params,
                 timeout: 20000
             }).then(function (res) {
-                success(res.data);
+                success(res);
             }, handleError(error));
         },
         sendSms: function (params, success, error) {

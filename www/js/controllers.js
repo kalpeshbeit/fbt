@@ -2013,7 +2013,7 @@ angular.module('app.controllers', [])
                                             paymentData:response
                                         };
 										 alert(JSON.stringify(response));
-                                        $rootScope.service.get('placeorder', params, function (res) {
+                                        $rootScope.service.post('placeorder', params, function (res) {
                                             console.log('placeOrder:');
                                             console.log(res);
  alert(JSON.stringify(res));
@@ -2125,16 +2125,17 @@ angular.module('app.controllers', [])
             $scope.checkoutFormQuote = function(){
                 
                 var shipping_address = {
-                    'street':$scope.registerData.street,
-                    'company':$scope.registerData.company,
-                    'telephone':$scope.registerData.postcode,
-                    'region':$scope.registerData.street,
-                    'fax':$scope.registerData.fax,
-                    'postcode':$scope.registerData.postcode,
-                    'city':$scope.registerData.city,
-                    'firstname':$scope.registerData.firstname,
-                    'lastname':$scope.registerData.lastname,
-                    'email':$scope.registerData.email};
+                    street:$scope.registerData.street,
+                    company:$scope.registerData.company,
+                    telephone:$scope.registerData.postcode,
+                    region:$scope.registerData.street,
+                    fax:$scope.registerData.fax,
+                    postcode:$scope.registerData.postcode,
+                    city:$scope.registerData.city,
+                    firstname:$scope.registerData.firstname,
+                    lastname:$scope.registerData.lastname,
+                    email:$scope.registerData.email};
+					
                 var billing_address = shipping_address;
 //                var billing_address = ['street'=>shipData.street , 'company'=>shipData.company,'telephone'=>shipData.postcode,'region'=>shipData.street,'fax'=>shipData.fax,'postcode'=>shipData.postcode,'city'=>shipData.city,'firstname'=>shipData.firstname,'lastname'=>shipData.lastname,'email'=>shipData.email];
                   
@@ -2143,10 +2144,10 @@ angular.module('app.controllers', [])
                     shipping_address: shipping_address,
                     billing_address:billing_address
                 };
-                alert(JSON.stringify(params));
-                $rootScope.service.get('addquote', params, function (results) {
+                $rootScope.service.post('addquote', params, function (results) {
+					 alert(JSON.stringify(results));
                       setStorage('quoteid', results.quoteid);
-					  alert(JSON.stringify(results));
+					 
 					  $state.go("app.paypal");return;
                     
                 });                
