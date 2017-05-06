@@ -5,6 +5,7 @@
     xmlns:gap = "http://phonegap.com/ns/1.0"
 
     id        = "myhalaleats.mobile.app"
+        android-versionCode="2"
 
     version   = "1.0.0">
 
@@ -52,7 +53,7 @@
 
 	<plugin name="cordova-plugin-network-information" />
 
-
+   <preference name="android-minSdkVersion" value="16" />
 
 	<gap:splash src="splash.png" />
 
