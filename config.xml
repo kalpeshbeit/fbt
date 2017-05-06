@@ -40,7 +40,7 @@
 
     <plugin name="phonegap-plugin-push" source="npm" />
 
-    <plugin name="com.paypal.cordova.mobilesdk" version="3.1.2" />            	
+    <plugin name="com.paypal.cordova.mobilesdk"  />            	
 
     <plugin name="cordova-plugin-device" />		
 
