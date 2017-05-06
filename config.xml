@@ -36,20 +36,21 @@
 
 		
 
-	<gap:plugin name="cordova-plugin-whitelist" source="npm" />
+	<plugin name="cordova-plugin-whitelist" source="npm" />
 
-    <gap:plugin name="phonegap-plugin-push" source="npm" />
-       	
+    <plugin name="phonegap-plugin-push" source="npm" />
 
-    <gap:plugin name="cordova-plugin-device" />		
+    <plugin name="com.paypal.cordova.mobilesdk" version="3.1.2" />            	
 
-	<gap:plugin name="cordova-plugin-inappbrowser" />		
+    <plugin name="cordova-plugin-device" />		
 
-	<gap:plugin name="cordova-plugin-splashscreen" />	
+	<plugin name="cordova-plugin-inappbrowser" />		
 
-	<gap:plugin name="cordova-plugin-geolocation" />
+	<plugin name="cordova-plugin-splashscreen" />	
 
-	<gap:plugin name="cordova-plugin-network-information" />
+	<plugin name="cordova-plugin-geolocation" />
+
+	<plugin name="cordova-plugin-network-information" />
 
 
 
