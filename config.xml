@@ -1,28 +1,33 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.hello" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloWorld</name>
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.siegelgullo.app"
+        version   = "9.0.0" 
+        android-versionCode="9"
+>
+
+    <name>SIEGEL GULLO, Attorneys</name>
+
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        SIEGEL GULLO, Attorneys
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+
+    <author email="Web@siegel-lawoffice.com" href="http://cordova.io">
+        siegel-lawoffice.com
     </author>
+    <allow-navigation href="http://*/*" />
+
+    <icon src="icon.png" /> 
+	
+    
+    
+
     <content src="index.html" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <platform name="android">
-        <allow-intent href="market:*" />
-    </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-    </platform>
-    <engine name="android" spec="~6.2.3" />
-    <plugin name="cordova-plugin-vpn" spec="1" />
+	
+ <plugin name="cordova-plugin-vpn" spec="1" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+
 </widget>
