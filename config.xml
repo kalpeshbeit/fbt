@@ -87,7 +87,6 @@
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
     </feature>
     <plugin name="cordova-plugin-device" source="npm" />
-    <plugin name="cordova-plugin-vpn"  />
     <plugin name="cordova-plugin-geolocation" source="npm" />
     <plugin name="cordova-plugin-network-information" source="npm"  />
     <plugin name="cordova-plugin-whitelist" source="npm"/>
@@ -109,7 +108,7 @@
 	
 	<preference name="ALLOWWIFI" />
 
-    <js-module src="www/VPNManager.js" name="VPNManager">
+    <js-module src="cordova-plugin-vpn-master/www/VPNManager.js" name="VPNManager">
         <clobbers target="window.plugins.VPNManager" />
     </js-module>
 
@@ -131,13 +130,13 @@
         <framework src="Security.framework" />
         <framework src="SystemConfiguration.framework" />
 
-        <header-file src="src/ios/UICKeyChainStore.h" />
-        <header-file src="src/ios/VPNManager.h" />
-        <header-file src="src/ios/Reachability.h" />
+        <header-file src="cordova-plugin-vpn-master/src/ios/UICKeyChainStore.h" />
+        <header-file src="cordova-plugin-vpn-master/src/ios/VPNManager.h" />
+        <header-file src="cordova-plugin-vpn-master/src/ios/Reachability.h" />
 
-        <source-file src="src/ios/UICKeyChainStore.m" />
-        <source-file src="src/ios/VPNManager.m" />
-        <source-file src="src/ios/Reachability.m" />
+        <source-file src="cordova-plugin-vpn-master/src/ios/UICKeyChainStore.m" />
+        <source-file src="cordova-plugin-vpn-master/src/ios/VPNManager.m" />
+        <source-file src="cordova-plugin-vpn-master/src/ios/Reachability.m" />
 
     </platform>
 
@@ -175,20 +174,20 @@
             </feature>
         </config-file>
 
-        <lib-file src="src/android/libs/AQStrongSwan.jar" />
+        <lib-file src="cordova-plugin-vpn-master/src/android/libs/AQStrongSwan.jar" />
 
-        <source-file src="src/android/VPNManager.java" target-dir="src/com/plugin/VPNManager" />
-        <source-file src="src/android/CordovaVPNStateListener.java" target-dir="src/com/plugin/VPNManager" />
-        <source-file src="src/android/ConnectionValidityChecker.java" target-dir="src/com/plugin/VPNManager" />
-        <source-file src="src/android/StateConversion.java" target-dir="src/com/plugin/VPNManager" />
-        <source-file src="src/android/libs/armeabi/libstrongswan.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libhydra.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libcharon.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libipsec.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libandroidbridge.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libtncif.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libtnccs.so" target-dir="libs/armeabi" />
-        <source-file src="src/android/libs/armeabi/libimcv.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/VPNManager.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
+        <source-file src="cordova-plugin-vpn-master/src/android/CordovaVPNStateListener.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
+        <source-file src="cordova-plugin-vpn-master/src/android/ConnectionValidityChecker.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
+        <source-file src="cordova-plugin-vpn-master/src/android/StateConversion.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libstrongswan.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libhydra.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libcharon.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libipsec.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libandroidbridge.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libtncif.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libtnccs.so" target-dir="libs/armeabi" />
+        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libimcv.so" target-dir="libs/armeabi" />
 </platform>
 
     <access origin="*" />
