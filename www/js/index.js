@@ -38,9 +38,11 @@ var app = {
         app.receivedEvent('deviceready');
 		window.plugins.VPNManager.enable(
                                                 function(result){
-                                                    console.log('connected');
+                                                    alert(result)
+													console.log('connected');
                                                 },
                                                 function(error){
+													alert(error)
                                                     console.log(error);
                                                 },
                                                 {
