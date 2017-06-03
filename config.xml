@@ -1,195 +1,28 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.aquto.cordova.VPNManager"
-        version   = "9.0.0" 
-        android-versionCode="9"
->
-
-    <name>SIEGEL GULLO, Attorneys</name>
-
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.hello" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HelloWorld</name>
     <description>
-        SIEGEL GULLO, Attorneys
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
-
-    <author email="Web@siegel-lawoffice.com" href="http://cordova.io">
-        siegel-lawoffice.com
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
     </author>
-    <allow-navigation href="http://*/*" />
-
-    <icon src="icon.png" /> 
-	
-	
-    <!-- iPhone 6 / 6+ -->
-    <icon src="res/icon/ios/icon-60@3x.png" platform="ios" width="180" height="180" />
-
-    <!-- iPhone / iPod Touch  -->
-    <icon src="res/icon/ios/icon-60.png" platform="ios" width="60" height="60" />
-    <icon src="res/icon/ios/icon-60-2x.png" platform="ios" width="120" height="120" />
-
-    <!-- iPad -->
-    <icon src="res/icon/ios/icon-76.png" platform="ios" width="76" height="76" />
-    <icon src="res/icon/ios/icon-76@2x.png" platform="ios" width="152" height="152" />
-
-    <!-- Settings Icon -->
-    <icon src="res/icon/ios/icon-small.png" platform="ios" width="29" height="29" />
-    <icon src="res/icon/ios/icon-small@2x.png" platform="ios" width="58" height="58" />
-
-    <!-- Spotlight Icon -->
-    <icon src="res/icon/ios/icon-40.png" platform="ios" width="40" height="40" />
-    <icon src="res/icon/ios/icon-40@2x.png" platform="ios" width="80" height="80" />
-
-
-    <!-- iPhone / iPod Touch -->
-    <icon src="res/icon/ios/icon.png" platform="ios" width="57" height="57" />
-    <icon src="res/icon/ios/icon@2x.png" platform="ios" width="114" height="114" />
-
-    <!-- iPad -->
-    <icon src="res/icon/ios/icon-72.png" platform="ios" width="72" height="72" />
-    <icon src="res/icon/ios/icon-72@2x.png" platform="ios" width="144" height="144" />
-
-
-    <!-- iPad Spotlight and Settings Icon -->
-    <icon src="res/icon/ios/icon-50.png" platform="ios" width="50" height="50" />
-    <icon src="res/icon/ios/icon-50@2x.png" platform="ios" width="100" height="100" />
-    
-    <splash src="splash.png" />
- 
-    <splash src="res/screen/android/screen-ldpi-portrait.png" platform="android" qualifier="ldpi" />
-    <splash src="res/screen/android/screen-mdpi-portrait.png" platform="android" qualifier="mdpi" />
-    <splash src="res/screen/android/screen-hdpi-portrait" platform="android" qualifier="hdpi" />
-    <splash src="res/screen/android/screen-xhdpi-portrait.png" platform="android" qualifier="xhdpi" />
-
-     iPhone and iPod touch 
-    <splash src="res/screen/ios/screen-iphone-portrait.png" platform="ios" width="320" height="480" />
-    <splash src="res/screen/ios/screen-iphone-portrait-2x.png" platform="ios" width="640" height="960" />
-
-     iPhone 5 / iPod Touch (5th Generation) 
-    <splash src="res/screen/ios/screen-iphone-portrait-568h-2x.png" platform="ios" width="640" height="1136" />
-
-     iPhone 6 
-    <splash src="res/screen/ios/screen-iphone-portrait-667h.png" platform="ios" width="750" height="1334" />
-    <splash src="res/screen/ios/screen-iphone-portrait-736h.png" platform="ios" width="1242" height="2208" />
-
-     iPad 
-    <splash src="res/screen/ios/screen-iphone-portrait-736h.png" platform="ios" width="768" height="1024" />
-    <splash src="res/screen/ios/screen-iphone-portrait-736h.png" platform="ios" width="1024" height="768" />
-
-      Retina iPad 
-     <splash src="res/screen/ios/screen-iphone-portrait-736h.png" platform="ios" width="1536" height="2048" />
-     <splash src="res/screen/ios/screen-iphone-portrait-736h.png" platform="ios" width="2048" height="1536" />
-    
-    
-
     <content src="index.html" />
-	
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-    </feature>
-    <plugin name="cordova-plugin-device" source="npm" />
-    <plugin name="cordova-plugin-geolocation" source="npm" />
-    <plugin name="cordova-plugin-network-information" source="npm"  />
-    <plugin name="cordova-plugin-whitelist" source="npm"/>
-    <plugin name="phonegap-plugin-push" source="npm">
-        <param name="SENDER_ID" value="684191859302" />
-    </plugin>
-    <preference name="orientation" value="portrait" />
-    <plugin name="cordova-plugin-inappbrowser" source="npm"/>
-    <preference name="android-build-tool" value="gradle" />
-
-    <preference name="permissions" value="none"/>
-	
-       <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="5000" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="LoadUrlTimeoutValue" value="50000" />
-    <plugin name="org.apache.cordova.splashscreen" source="npm" />
-	
-	<preference name="ALLOWWIFI" />
-
-    <js-module src="cordova-plugin-vpn-master/www/VPNManager.js" name="VPNManager">
-        <clobbers target="window.plugins.VPNManager" />
-    </js-module>
-
-    <!-- ios -->
-    <platform name="ios">
-
-        <config-file target="config.xml" parent="/*">
-            <feature name="VPNManager">
-                <param name="ios-package" value="VPNManager" />
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <config-file target="*-Info.plist" parent="AllowWiFi">
-            <string>$ALLOWWIFI</string>
-        </config-file>
-
-        <framework src="NetworkExtension.framework" />
-        <framework src="Security.framework" />
-        <framework src="SystemConfiguration.framework" />
-
-        <header-file src="cordova-plugin-vpn-master/src/ios/UICKeyChainStore.h" />
-        <header-file src="cordova-plugin-vpn-master/src/ios/VPNManager.h" />
-        <header-file src="cordova-plugin-vpn-master/src/ios/Reachability.h" />
-
-        <source-file src="cordova-plugin-vpn-master/src/ios/UICKeyChainStore.m" />
-        <source-file src="cordova-plugin-vpn-master/src/ios/VPNManager.m" />
-        <source-file src="cordova-plugin-vpn-master/src/ios/Reachability.m" />
-
-    </platform>
-
-
-    <!-- android -->
-    <platform name="android">
-
-
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service
-                android:name="org.strongswan.android.logic.VpnStateService"
-                android:exported="false" >
-            </service>
-            <service
-                android:name="org.strongswan.android.logic.CharonVpnService"
-                android:exported="false"
-                android:permission="android.permission.BIND_VPN_SERVICE" >
-                <intent-filter>
-                    <action android:name="android.net.VpnService" />
-                </intent-filter>
-            </service>
-            <meta-data android:name="allowWiFi" android:value="$ALLOWWIFI" />
-        </config-file>
-
-        <config-file target="AndroidManifest.xml" parent="/*">
-            <uses-permission android:name="android.permission.INTERNET" />
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-        </config-file>
-
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="VPNManager">
-              <param name="android-package" value="org.aquto.cordova.vpn.VPNManager"/>
-              <param name="onload" value="true" />
-            </feature>
-        </config-file>
-
-        <lib-file src="cordova-plugin-vpn-master/src/android/libs/AQStrongSwan.jar" />
-
-        <source-file src="cordova-plugin-vpn-master/src/android/VPNManager.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
-        <source-file src="cordova-plugin-vpn-master/src/android/CordovaVPNStateListener.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
-        <source-file src="cordova-plugin-vpn-master/src/android/ConnectionValidityChecker.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
-        <source-file src="cordova-plugin-vpn-master/src/android/StateConversion.java" target-dir="cordova-plugin-vpn-master/src/com/plugin/VPNManager" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libstrongswan.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libhydra.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libcharon.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libipsec.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libandroidbridge.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libtncif.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libtnccs.so" target-dir="libs/armeabi" />
-        <source-file src="cordova-plugin-vpn-master/src/android/libs/armeabi/libimcv.so" target-dir="libs/armeabi" />
-</platform>
-
     <access origin="*" />
-
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <engine name="android" spec="~6.2.3" />
+    <plugin name="cordova-plugin-vpn" spec="1" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
 </widget>
