@@ -1,0 +1,3105 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+    <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+    <link rel="stylesheet" href="lib/materialize/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/app.css?ver=1.0">
+    <link href="lib/mobiscroll/css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.frame.android.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.frame.android-holo.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.frame.ios-classic.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.frame.ios.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.scroller.android.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.scroller.android-holo.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.scroller.ios-classic.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+    <link href="lib/mobiscroll/css/mobiscroll.android-holo-light.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+
+    <link href='http://codepen.io/SitePoint/pen/azeYag.css' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/footable.core.css' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/jquery-1.11.3.min.js"></script>   
+    <script src="lib/materialize/js/materialize.js"></script>
+
+    <script src="lib/onsen/js/onsenui.js"></script>
+    <script src="lib/jquery.mask.min.js"></script>
+    <script src="lib/jquery.form-validator.min.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.core.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.frame.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.scroller.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.util.datetime.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.datetimebase.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.datetime.js"></script>
+    <script src="lib/mobiscroll/js/mobiscroll.frame.android-holo.js"></script>
+    <script src="lib/jquery.translate.js"></script>
+    <script src="js/config.js?ver=1.0"></script>
+    <script src="js/old-openfb.js?ver=1.0"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="js/raphael-min.js"></script>
+    <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
+    <script src="js/morris-0.4.1.min.js"></script>
+    <script src="js/tpl.js?ver=1.0"></script>
+    <script src="js/app.js?ver=1.0"></script>
+    <script src="js/services.js?ver=1.0"></script>
+
+
+
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/footable.js"></script>
+
+
+
+    <!-- google fontfamily -->
+    <link rel="stylesheet" href="css/custom-shuban.css">
+</head>
+<body>
+
+<ons-template id="start.html">
+</ons-template>
+<ons-modal var="loader">
+    <div class="preloader-wrapper active">
+        <div class="spinner-layer spinner-red-only">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+                <div class="circle"></div>
+            </div><div class="circle-clipper right">
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</ons-modal>
+
+<div ons-loading-placeholder="start.html" class="loading-screen">
+    <div class="inner">
+        <p><i class="fa fa-spinner fa-spin"></i> Loading SIEGEL GULLO...</p>
+    </div>
+</div>
+<ons-modal var="loaderSearch">
+    <ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+    <br>
+    <br> <span class="trn" data-trn-key="searching_for_restaurant">Searching for events</span>
+</ons-modal>
+<ons-modal var="loaderLang">
+    <ons-icon icon="fa-circle-o-notch" spin="true"></ons-icon>
+    <br>
+    <br> loading languages
+</ons-modal>
+
+<ons-sliding-menu id="mainmenuhome" main-page="home.html" menu-page="menu.html" side="left" var="menu" close-on-tap type="overlay" >
+</ons-sliding-menu>
+
+<script type="text/ons-template" id="menu.html">
+    <div class="menu_size_hp">
+    <div class="center menu_hp" style="padding: 10px;background: #FFF;color: #c4112d;font-weight: 600;">Menu</div>
+    <div class="profile-card">
+
+    <img src="css/images/icon.png" class="profile-image">
+    <div class="profile-name">Contact an Attorney</div>
+    <div class="profile-id">(716) 883-4800</div>
+    <div class="profile-desc">88 West Utica St - Buffalo, NY 14209</div>
+
+    </div>
+
+    <ons-list modifier="inset" style="margin-top: 10px">
+    <ons-list-item onclick="menu.setMainPage('home.html', {closeMenu: true})" class="bottom-menu-item" modifier="chevron">
+    <ons-icon icon="fa fa-building"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">Home</span>
+    </ons-list-item>
+    <ons-list-item onclick="about_page1()" class="bottom-menu-item" modifier="chevron">
+    <ons-icon icon="fa fa-users"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">About</span>
+    </ons-list-item>
+    <div id="toggle_about" class="hide">
+
+    <ons-list-item onclick="about_page()" class="bottom-menu-item" modifier="chevron">
+    &nbsp;&nbsp;&nbsp;&nbsp;<ons-icon icon="fa fa-user"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">About Siegel Gullo</span>
+    </ons-list-item>
+    <ons-list-item onclick="about_hs_page()" class="bottom-menu-item" modifier="chevron">
+    &nbsp;&nbsp;&nbsp;&nbsp;<ons-icon icon="fa fa-male"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">About Harvey Siegel</span>
+    </ons-list-item>
+    <ons-list-item onclick="about_mg_page()" class="bottom-menu-item" modifier="chevron">
+    &nbsp;&nbsp;&nbsp;&nbsp;<ons-icon icon="fa fa-female"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">About Melinda Gullo</span>
+    </ons-list-item>
+    </div>
+<!--
+    <ons-list-item onclick="payment_center();" class="bottom-menu-item" modifier="chevron">
+    <ons-icon icon="fa fa-money"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">Payment Center</span>
+    </ons-list-item>
+-->    
+        
+        
+        
+    <ons-list-item onclick="page_contact();" class="bottom-menu-item" modifier="chevron">
+    <ons-icon icon="fa fa-envelope"></ons-icon>
+    <span class="trn" data-trn-key="browse_resto">Contact</span>
+    </ons-list-item>
+    </ons-list>
+
+</div>
+</script>
+
+
+
+
+
+<script type="text/ons-template" id="home.html">
+    <ons-navigator title="Navigator" var="sNavigator">
+
+    <ons-page id="page_mainmenu">
+    <ons-toolbar>
+    <div class="left">
+        <ons-toolbar-button onclick="menu.toggleMenu();">
+            <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+        </ons-toolbar-button>
+    </div>
+    <div class="center">
+        <span id="search-text" class="toolbar_font_size">SIEGEL GULLO, Attorneys</span>
+    </div>
+  
+    
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">
+    <div>
+    <img src="icon.png" class="icon-home" >
+    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>
+    </div>
+    <div class="row mainpagemargin">
+    <div class="col 6" style='text-align:center' onclick="personal_inquiry();">
+    <img class="ar-img-icon" src="css/images/injury.png"><br>
+    <span style="color:#d34834">Personal Injury</span>
+    </div>
+
+    <div class="col 6" onclick="page_family();" style='text-align:center'>
+    <img class="ar-img-icon" src="css/images/family.png">
+    <br>
+    <span style="color:#d34834">Family Law</span>
+    </div>
+    </div>
+    <div class="row mainpagemargin">
+    <div class="col 6" onclick="page_criminal_defence();" style='text-align:center'>
+    <img class="ar-img-icon" src="css/images/handcuff.png">
+    <br>
+    <span style="color:#d34834">Criminal  Defense</span> 
+    </div>
+    
+    <div class="col 6" onclick="page_DWI_Defense();" style='text-align:center'>
+    <img class="ar-img-icon" src="css/images/dwi.png">
+    <br>
+    <span style="color:#d34834">D.W.I. Defense</span>
+    </div>
+    
+    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    SIEGEL GULLO, Attorneys in Buffalo, NY provides client legal services in the practice areas of Personal Injury, Criminal Defense, D.W.I. Defense and Family Law including Divorce.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+    </ons-navigator>
+</script>
+<script type="text/ons-template" id="personal_inquiry.html">
+
+    <ons-page id="page_personal_inquiry">
+    <div id="page_mainmenu">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Personal Injury</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <div class="row mainpagemargin">
+    
+    <div class="col 6" style='text-align:center'>
+    <a href="tel:911">
+    <img class="ar-img-icon" src="css/images/call-911-icon.png">
+    <br>
+    <span style="color:#d34834">Call 911</span>
+    </a>
+    </div>
+
+    <div class="col 6" style='text-align:center'>
+    <a href="https://www.google.com/webhp?&ion=1&espv=2&ie=UTF-8#q=hospital" target="_system">
+    <img class="ar-img-icon" src="css/images/call-hospital-icon.png">
+    <br>
+    <span style="color:#d34834">Find a Hospital</span>
+    </a>
+    </div>
+    </div>
+    
+    <div class="row mainpagemargin">
+    <div class="col 6" style='text-align:center' onclick="inquire_acc()">
+    <img class="ar-img-icon" src="css/images/handcuff.png">
+    <br>
+    <span style="color:#d34834">Injury Accident</span>
+    </div>
+    
+    <div class="col 6" style='text-align:center'  onclick="inquire_acc()">
+    <img class="ar-img-icon" src="css/images/dwi.png">
+    <br>
+    <span style="color:#d34834">Auto Accident</span>
+    </div>
+    
+    </div>
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </div>
+    </ons-page>
+</script>
+
+<script type="text/ons-template" id="page_family.html">
+
+    <ons-page id="page_family">
+    <div id="page_mainmenu">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Family Law</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <div class="row mainpagemargin">
+    
+    <div class="col 6" style='text-align:center' onclick="page_divorce()">
+    <img class="ar-img-icon" src="css/images/family4.png">
+    <br>
+    <span style="color:#d34834">Divorce</span>
+    </div>
+
+    <div class="col 6" style='text-align:center' onclick="page_custody()">
+    <img class="ar-img-icon" src="css/images/family4.png">
+    <br>
+    <span style="color:#d34834">Custody</span>
+    </div>
+
+    </div>
+    <div class="row mainpagemargin">
+
+    <div class="col 6" style='text-align:center' onclick="page_child_and_sous_support()">
+    <img class="ar-img-icon" src="css/images/spousal-mait-pic.png">
+    <br>
+    <span style="color:#d34834">Child & Spousal Support</span> 
+    </div>
+    
+    
+    <div class="col 6" style='text-align:center' onclick="page_financial_calc()">
+    <img class="ar-img-icon" src="css/images/calc.png">
+    <br>
+    <span style="color:#d34834">Finacial Calculators</span>
+    </div>
+    </div>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_payment_center.html">
+
+    <ons-page id="page_payment_center">
+    <div id="page_mainmenu">
+    <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button onclick="menu.toggleMenu();">
+    <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+    </ons-toolbar-button>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Payment Center</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <div class="row mainpagemargin">
+    <div class="s4 m2" onclick="page_paynow()">
+    <div class="card red darken-2" >
+    <div class="card-content center white-text">
+    <img class="ar-img-icon" src="css/images/Pay-now.png">
+    </div>
+    <div class="card-action singletextpad">
+    Payment
+    </div>
+    </div>
+    </div>
+
+    <div class="s4 m2" onclick="page_plan_30_day()">
+    <div class="card red darken-2" >
+    <div class="card-content center white-text">
+    <img class="ar-img-icon" src="css/images/30-day.png">
+    </div>
+    <div class="card-action singletextpad">
+    Plan
+    </div>
+    </div>
+
+    </div>
+
+    <div class="s4 m2" onclick="page_plan_90_day()">
+    <div class="card red darken-2">
+    <div class="card-content center white-text">
+    <img class="ar-img-icon" src="css/images/90-day.png">
+    </div>
+    <div class="card-action singletextpad">
+    Plan
+    </div>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card red darken-2" onclick="page_financing()">
+    <div class="card-content center white-text">
+    <img class="ar-img-icon" src="css/images/paypal-credit.png">
+    </div>
+    <div class="card-action singletextpad">
+    Financing
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </div>
+    </ons-page>
+</script>
+
+<script type="text/ons-template" id="page_criminal_defence.html">
+
+    <ons-page id="page_criminal_defence">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Criminal Law Defense</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin">
+                <div class="col 6" style='text-align:center' onclick="page_criminal_defense_info()">
+                                <img class="ar-img-icon" src="css/images/gavel.png">
+                            <br>
+                                <span style="color:#d34834">Criminal Defense Infromation</span>
+                </div>
+
+                <div class="col 6" style='text-align:center' onclick="page_know_your_rights()">
+                                <img class="ar-img-icon" src="css/images/police-man.png">
+                            <br>
+                                <span style="color:#d34834">Know Your Rights</span>
+                        </div>
+                  
+                </div>
+            <div class="row mainpagemargin mainpagemargin_hp">
+
+                <div class="" style='text-align:center;margin-left:6px' onclick="page_being_arrested()">
+                            <img class="ar-img-icon hp-img-icon" src="css/images/handcuff.png">
+                        <br>
+                            <span style="color:#d34834">i am Being Arrested</span> 
+                    </div>
+                </div>
+
+            </div>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_DWI_Defense.html">
+
+    <ons-page id="page_DWI_Defense">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">D.W.I. Defense</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin">
+                <div class="col 6" style='text-align:center' onclick="page_DWI_info()">
+                                <img class="ar-img-icon" src="css/images/dwi.png">
+                            <br>
+                            <span style="color:#d34834">D.W.I Information </span>
+                </div>
+
+                <div class="col 6" style='text-align:center' onclick="page_arrested()">
+                                <img class="ar-img-icon" src="css/images/handcuff.png">
+                            <br>
+                            <span style="color:#d34834">I'm Being Arrested</span>
+                        </div>
+                  
+                </div>
+            <div class="row mainpagemargin">
+
+                <div class="col 6" style='text-align:center' onclick="page_bld_alc_clc()">
+                            <img class="ar-img-icon" src="css/images/calc.png">
+                        <br>
+                        <span style="color:#d34834">Blood Alcohol Calculator </span>
+                </div>
+                <div class="col 6" style='text-align:center' onclick="page_being_arrested()">
+                        <a href="https://www.google.com/search?q=taxi" target="_blank">
+                                <img class="ar-img-icon" src="css/images/taxi.png">
+                            <br>
+                                <span style="color:#d34834">Call a Cab</span>
+                        </a>
+                </div>
+
+            </div>
+
+
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+
+
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_financial_calc.html">
+
+    <ons-page id="page_financial_calc">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Finacial Calculators</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin">
+                <div class="col 6" style='text-align:center' onclick="page_child_support_calculator()">
+                                <img class="ar-img-icon ar-img-icon_hp" src="css/images/calc.png">
+                            <br>
+                                <span style="color:#d34834">Child Support Calculator</span>
+                </div>
+
+                <div class="col 6" style='text-align:center' onclick="page_spousal_calc()">
+                                <img class="ar-img-icon ar-img-icon_hp" src="css/images/calc.png">
+                            <br>
+                                <span style="color:#d34834">Spousal Maintenance Calculator</span>
+                        </div>
+                  
+                </div>
+
+
+            </div>
+
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_bld_alc_clc.html">
+
+    <ons-page id="page_arrested">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Blood Alcohol Calculator</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/Blood-alc-calc.php?from=app" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_paynow.html">
+
+    <ons-page id="page_paynow">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="menu.setMainPage('page_payment_center.html', {closeMenu: true})">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Paynow</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+        <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/paynow.php" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+            
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_plan_30_day.html">
+
+    <ons-page id="page_plan_30_day">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="menu.setMainPage('page_payment_center.html', {closeMenu: true})">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Plan</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+        <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/30day.php?from=app" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+            
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_plan_90_day.html">
+
+    <ons-page id="page_plan_90_day">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="menu.setMainPage('page_payment_center.html', {closeMenu: true})">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Plan</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+        <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/90day.php?from=app" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+            
+            
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_financing.html">
+
+    <ons-page id="page_financing">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="menu.setMainPage('page_payment_center.html', {closeMenu: true})">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Plan</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+        <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/finance.php?from=app" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+            
+            
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_arrested.html">
+
+    <ons-page id="page_arrested">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">D.W.I. Defense</span>
+            </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin mainpagemargin_arrested">
+                <div style="text-align:center">
+                  <a href="sms:+1?body=I am being arrested, please contact my attorney at (716) 883-4800."><img src="css/images/handcuff.png" alt="img" class="center-icon" style="width:50%"><br><strong><span style="color:#d34834">I'm Being Arrested</span></strong></a>
+                </div>
+            </div>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_DWI_info.html">
+
+    <ons-page id="page_DWI_info">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">D.W.I. Information</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin timeline-message law_defence_hp" style="padding:10px;text-align:justify">
+                <p><strong>Buffalo DWI Defense Lawyer Working For You!</strong></p>
+                <p>New York state takes DWI offenses very seriously. Negative consequences that can stem from a DWI conviction include loss of your driver’s license, large fines, a prison sentence, loss of your vehicle, an ignition lock placed on your car, huge hike in insurance rates, and loss of ability to travel to places such as Canada.</p>
+                <p>It is important that in this crucial moment in your life you get affordable, strong DWI defense that will mitigate the possible damage to your future as much as possible. SIEGEL GULLO, Attorneys is an experienced law firm that has defended many clients successfully from DWI charges in Buffalo and Western New York courts.</p>
+                <p>Due to the seriousness of a DWI charge it is important that you do not delay in calling SIEGEL GULLO, Attorneys today. Every moment you delay will give us less time to discuss the facts of your case and to prepare the best legal defense for you. Let our experience with New York State DWI laws and local Buffalo courts be your ally. You can reach us at our office in downtown Buffalo, NY at (716) 883-4800.</p>
+                <p><strong>New York DWI Resources:</strong></p>
+                <p><a href="http://www.dmv.ny.gov/alcohol-drug.htm" target="_blank" rel="nofollow">New York State DWI FAQ,</a></p>
+                <p><a href="http://www.dmv.ny.gov/alcohol-drug.htm#lelaw" target="_blank" rel="nofollow">New York’s Leandra’s Law (Ignition switch for DWI convictions)</a></p>
+                <p><a href="http://www.dmv.ny.gov/drp.htm" target="_blank" rel="nofollow">New York’s Drinking Driver Program</a></p>
+            </div>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_know_your_rights.html">
+
+    <ons-page id="page_know_your_rights">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Criminal Law Defense</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin timeline-message law_defence_hp" style="padding:10px;text-align:justify">
+                    <ul>
+                      <li><strong>Miranda Warning</strong>- The Miranda Warning, which  originated&nbsp; from U.S. Supreme Court  ruling, Miranda v. Arizona, 384 U.S. 436, set forth the following warning and  accompanying rights:</li>
+                      <li><strong>You have the right to remain silent</strong> when  questioned;</li>
+                      <li><strong>Anything you say can be used against you in a court of law</strong>;</li>
+                      <li><strong>You have the right to consult with a lawyer before speaking  to police</strong>,  and have that lawyer present during the interrogation at present or in the  future;</li>
+                      <li><strong>If you cannot afford a lawyer, one will be appointed to  represent you,</strong> before any questioning;</li>
+                      <li>If you  decide to answer any questions without an attorney present, you will still have  the right to stop answering at any time until you talk with, or have an attorney  present.</li>
+                      <li><strong>Do you understand your rights as I have explained them to  you, are you willing to answer my questions without an attorney present?</strong></li>
+                      <li><strong>When Miranda Warnings Don't Apply- </strong>There are  two prerequisites the police must follow before issuing a Miranda Warning:<strong></strong></li>
+                      <ul>
+                        <li>&nbsp;The suspect is in police custody</li>
+                        <li>&nbsp;The suspect is under interrogation</li>
+                        <li>&nbsp;If police are present and you’re not in police  custody, or being interrogated, the police don't have to issue you a Miranda  warning. This means that anything you say until those two prerequisites are met  by police can be used as evidence against you.</li>
+                      </ul>
+                    </ul>
+
+                  <ul>
+                    <li><strong>Traffic and DUI Stops</strong>,<strong> </strong>(your civil  rights during a traffic stop). </li>
+                    <ul>
+                      <li><strong>Vehicle Searches</strong>- If stopped by a police officer you<strong> have the right to refuse consent to a  search</strong>. (If Police should ask the driver or any passengers who have been  stopped at a traffic checkpoint, or during a traffic offense if they can search  the vehicle without a warrant or probable cause, you do not have to consent to  the search).</li>
+                      <li><strong>Probable cause</strong>- probable cause could include the  sight or smell of alcohol or contraband in plain view or plain smell, or verbal  admission of a crime. Once probable cause has been established an officer has  the right to perform a search. (Minor traffic offenses such as expired registration,  speeding or broken lights are not justification for probable cause).</li>
+                      <li><strong>Summary</strong>- The 4th Amendment does not require police officers to  inform motorists about their right to refuse a search. Therefore if you’re  stopped by police, remember to inform the officer, you do not consent to a  search (if asked). If you refuse consent and the officer chooses to search you,  or your vehicle anyway without probable cause, and then finds illegal evidence,  you or your lawyer may file a motion to suppress or dismiss such evidence in  court. </li>
+                      <li><strong>Right to Record, Film or Request officer information during  a Traffic Stop</strong>.</li>
+                      <li>Police  have the right to record a traffic stop using their dash cameras, however  motorists also have the right to film an officer during a traffic stop.</li>
+                      <li>Motorists  may film an officer during a stop, provided the filming or recording does not  interfere with the officer’s investigation.</li>
+                      <li>If your  civil rights, (including your Miranda rights) were violated during a traffic  stop, you’ll need to know the badge number, of the officer in question at the  traffic stop. </li>
+                      <li><strong>Reasonable  Detention Length</strong>- The amount of time you are stopped for must be reasonable  in length, while reasonable is not clearly defined, if the stop goes on for  more than 30 min you may want to inquire to the officer what is causing the  delay.<strong></strong></li>
+                      <li><strong>Right to refuse to answer Police Questions</strong>- Typical  questions a police officer might ask during a traffic stop might be to ask for  your license and registration however other questions such as “do you know why  I pulled you over?”, or “Do you have anything illegal in your car?” can be  refused to answer if they do not pertain to the reason for the traffic stop.</li>
+                    </ul>
+                  </ul>
+                  
+                  <ul>
+                    <li>
+                      <strong>What to do if arrested.</strong>
+                    </li>
+                    <ul>
+                      <li><strong>If arrested</strong>, you have a right to telephone a  lawyer, family member or friend to notify them of your arrest. You have a right  to speak with your lawyer at the place where you’re being held and to have your  lawyer present for all questioning and police lineups if requested. You also  have the right to remain silent and police have to read your Miranda rights  before questioning you.</li>
+                      <li><strong>Exercise your right to remain silent and seek legal advice  as quickly as you are permitted to.</strong></li>
+                      <li><strong><a href="http://www.siegel-lawoffice.com/mobile-dev7/contact.html">Contact an Attorney</a></strong></li>
+                    </ul>
+                  </ul>
+            </div>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_criminal_defense_info.html">
+
+    <ons-page id="page_criminal_defense_info">
+    <div id="page_mainmenu">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+                <span id="search-text" class="toolbar_font_size">Criminal Law Defense</span>
+            </div>
+    <div class="right">
+        
+    </div>
+
+        </ons-toolbar>
+
+        <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+            <div class="row mainpagemargin timeline-message law_defence_hp" style="padding:10px;text-align:justify">
+                <p><b>Buffalo Criminal Defense Lawyer and Attorney</b>
+                </p>
+                <p>Being  charged with a criminal offense can be frightening. A conviction of a criminal  offense can affect every aspect of your life, including your job, child  custody, and your standing in your community. Police officers, judges and the  entire judicial process can be intimidating, especially when you don’t have  someone you can trust to explain the process and protect your rights
+                <a href="http://www.siegel-lawoffice.com/contact-us.html">Contact our office today</a>
+                </p>
+                <p>At  the SIEGEL GULLO, Attorneys, we understand the stakes and we have the  experience and dedication to guide you through the complex criminal defense and  appeal process. For over a decade, our office has handled all types of criminal  and serious vehicle and traffic matters, allowing us to establish good working  relationships with law enforcement and local court systems.</p>
+                <p>If  you have been arrested or charged with a crime, you should contact an attorney  as soon as possible. When meeting with the attorney for the first time, you should  bring as much information about the charge/arrest as possible; including, but  not limited to: charging papers, police reports, bail papers, dates, times, and  locations of future appearances, and any records of prior arrests or  convictions.</p>
+                <p>
+                    <strong>Right to a lawyer</strong><br>
+                    Your right to have a lawyer is a fundamental
+                    one at every stage of a criminal proceeding.<br>
+                    If you appear in a court without a lawyer,
+                    the judge must allow you a “reasonable time” to
+                    find one before proceeding with the case, which
+                    usually means a few days. In addition, the judge
+                    must tell you of your right to use the telephone
+                    or to send a letter free of charge in order to get
+                    a lawyer and to tell a relative about your arrest.<br>
+                    Your right to have a lawyer is a
+                    fundamental one at every stage
+                    of a criminal proceeding.<br>
+                    If you do not have a lawyer at the time of your
+                    first appearance before the judge, you have the
+                    right to insist that the court assign you an attorney
+                    if you cannot afford one. If you have waived your
+                    right to counsel earlier and you now decide you
+                    want one, you may exercise your right at this stage.<br>
+                    Depending on the local plan in effect for
+                    providing a lawyer in such cases, you may get a
+                    private attorney, or you may be assigned someone
+                    from a legal aid society. A public defender will be
+                    assigned if your community has one.</p>
+                    <p><strong>What is an arrest?</strong><br>
+                    You have been arrested when a police officer
+                    or citizen takes you into custody or restrains you
+                    physically or verbally so that you may be held
+                    to answer for a crime or an offense; you may be
+                    taken into custody immediately or be given an
+                    appearance ticket similar to a traffic ticket.</p>
+                    <p><strong>Arrest warrants</strong><br>
+                    A warrant for an arrest is a process issued by a
+                    court. It may be executed on any day of the week
+                    and at any hour of the day or night. The police
+                    officer must tell you that he is acting under the
+                    authority of a warrant. He also must show you
+                    the warrant, if you ask, and give you a chance
+                    to read it either at the time of the arrest, if it is
+                    in his possession, or as soon as he obtains it.<br>
+                    If you refuse to let him in, a police officer
+                    with an arrest warrant may break open a door or
+                    window to gain entrance, after he has given you
+                    notice of his authority and purpose or without
+                    notice if he reasonably believes that you will
+                    escape, destroy evidence or that notice will
+                    endanger him.</p>
+                    <p><strong>Arrest without a warrant</strong><br>
+                    A police officer may arrest you without
+                    a warrant if:<br>
+                    (a) He has reason to believe that a crime,
+                    violation or offense is being committed or
+                    attempted in his presence.<br>
+                    (b) He has reason to believe that you committed
+                    a crime although not in his presence. Crimes
+                    include felonies and misdemeanors.<br>
+                    (c) He has reason to believe that you were
+                    lawfully arrested by a private person.<br>
+                    When making an arrest without a warrant
+                    a police officer must tell you the reason for the
+                    arrest, unless you are in the act of committing the
+                    crime or are being chased. In any arrest without a
+                    warrant, a police officer may chase you beyond
+                    his geographical area of employment.</p>
+                    <p><strong>Use of force</strong><br>
+                    If you resist an arrest, the police officer may
+                    use all necessary means to arrest you, including
+                    force.</p>
+                    <p><strong>Questioning without arrest</strong><br>
+                    The law permits a police officer to approach
+                    any person in a public place to request information
+                    if he reasonably suspects that you are committing,
+                    have committed or are about to commit a crime.
+                    He may demand to know your name, address
+                    and an explanation of your actions.<br>
+                    You are not required to answer; the right to
+                    remain silent is guaranteed you by the Federal
+                    and New York State constitutions.<br>
+                    When you are lawfully arrested, your person
+                    may be searched. In addition, the immediate area
+                    of the place of your arrest may be searched.<br>
+                    If you are held for questioning by a police
+                    officer and he reasonably suspects that he
+                    is in danger, he may search you for weapons
+                    or instruments that could cause serious injury.<br>
+                    If he finds a dangerous weapon or instrument
+                    on you, he may keep it until he finishes
+                    questioning you. If he does not arrest you, he
+                    must give you back the weapon (provided you
+                    have a permit to carry it). If the police officer,
+                    while searching you for dangerous weapons,
+                    finds anything else on you which is a crime
+                    to possess, he may take it, and arrest you for
+                    possessing it.</p>
+                    <p><strong>Search warrants</strong><br>
+                    In all situations, the police officer needs a
+                    warrant to search you, except where the search
+                    is incidental to a lawful arrest or under other
+                    specific circumstances where the search may
+                    be justified by law.<br>
+                    Anything unlawfully taken by the
+                    police may not later be used as
+                    evidence against you.<br>
+                    A search warrant is an order in writing signed
+                    by a judge directing a police officer to search a
+                    certain place and/or person for specified property
+                    and to bring that property to court. The warrant
+                    must describe the place and/or person to be
+                    searched and the property to be searched for.<br>
+                    The police officer has to show the search
+                    warrant and give notice of his authority or purpose
+                    before making entry and beginning to search.
+                    However, the warrant may authorize the police to
+                    break in and search without notice. A police officer
+                    can break in if you refuse to admit him after being
+                    given notice.<br>
+                    Anything unlawfully taken by the police may
+                    not later be used as evidence against you.<br>
+                    If you are taken into police custody (this
+                    includes juveniles) you have the following rights:<br>
+                    (a) You have a right to telephone your lawyer
+                    or to telephone your friends or family in order
+                    to notify them of your arrest.<br>
+                    (b) You have a right to speak with your lawyer
+                    at the place where you are being held.</p>
+            </div>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+            <div class="row mainpagemargin">
+                <div class="s4 m2 social_media_hr">
+                    <div class="card-ar blue darken-2"  >
+                        <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Like Us on Facebook
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="s4 m2">
+                    <div class="card-ar red darken-2"  >
+                        <a href="https://plus.google.com/103802809227805060014" target="_system">
+                            <div class="card-content center white-text">
+                                <img style="height: 30px; width: auto;" src="css/images/google.png">
+                            </div>
+                            <div style=" color: #FFF; " class="card-action singletextpad">
+                                Add Us on Google Plus
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <ons-list class="timeline" modifier="inset">
+                <ons-list-item class="timeline-li" modifier="tappable">
+                    <ons-col>
+                        <div class="timeline-message" style="padding:10px;text-align:justify">
+                            THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+                        </div>
+                    </ons-col>
+                </ons-list-item>
+            </ons-list>
+        </ons-scroller>
+
+        <div class="" style=" min-height:40px;   background: #d34834;">
+            <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+        </div>
+        </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_child_and_sous_support.html">
+
+    <ons-page id="page_child_and_sous_support">
+    <div id="page_mainmenu">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Child & Spousal Support</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <div class="row mainpagemargin">
+    
+    <div class="col 6" style='text-align:center' onclick="page_child()">
+    <img class="ar-img-icon" src="css/images/family2.png">
+    <br>
+    <span style="color:#d34834">Child Support</span>
+    </div>
+
+    <div class="col 6" style='text-align:center' onclick="page_spousal()">
+    <img class="ar-img-icon" src="css/images/family3.png">
+    <br>
+    <span style="color:#d34834">Spousal Maintenance</span> 
+    </div>
+    </div>
+    
+    
+    <div class="row mainpagemargin">
+    <div class="col 6" style='text-align:center' onclick="page_child_support_calculator()">
+    <img class="ar-img-icon ar-img-icon_hp" src="css/images/calc.png">
+    <br>
+    <span style="color:#d34834">Child Support Calculator</span>
+    </div>
+    
+    <div class="col 6" style='text-align:center' onclick="page_spousal_calc()">
+    <img class="ar-img-icon ar-img-icon_hp" src="css/images/calc.png">
+    <br>
+    <span style="color:#d34834">Spousal Maintenance Calculator</span>
+    </div>
+    </div>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </div>
+    </ons-page>
+</script>
+
+<script type="text/ons-template" id="inquire_acc.html">
+
+    <ons-page id="page_inquire_acc">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Injury Accident Information</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/motor-v-check-list/motor-vehicle-a.php?from=app" allowfullscreen></iframe>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_spousal_calc.html">
+
+    <ons-page id="page_spousal_calc">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Spousal Maintenance Calculator</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <iframe width="100%" height="450" frameborder="0" style="border:0;" src="http://scoutadvertisingllc.com/siegel-ios/mat-calc.php?from=app" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+            
+            
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+
+<script type="text/ons-template" id="page_contact.html">
+    <ons-navigator title="Navigator" var="sNavigator">
+
+    <ons-page id="page_contact">
+    <div id="page_mainmenu">
+    <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button onclick="menu.toggleMenu();">
+    <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+    </ons-toolbar-button>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Contact Us</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <div class="row mainpagemargin">
+    <div class="col 6" style='text-align:center'>
+    <a href="tel:+17168834800">
+    <img class="ar-img-icon" src="css/images/Call.png">
+    <br>
+    <span style="color:#d34834">Call Our Office</span>
+    </a>
+    </div>
+
+    <div class="col 6" style='text-align:center'>
+    <a href="sms:17166505991">
+    <img class="ar-img-icon" src="css/images/Text.png">
+    <br>
+    <span style="color:#d34834">Text an Attorney</span>
+    </a>
+    </div>
+    </div>
+    
+    <div class="row mainpagemargin">
+
+    <div class="col 6" style='text-align:center'>
+    <a href="mailto:web@siegel-lawoffice.com">
+    <img class="ar-img-icon" src="css/images/Email.png">
+    <br>
+    <span style="color:#d34834">Email Us</span> 
+    </a>
+    </div>
+    
+    <div class="col 6" style='text-align:center'>
+    <a href='https://www.google.com/maps/dir//88+W+Utica+St,+Buffalo,+NY+14209/@42.9111067,-78.8717263,702m/data=!3m2!1e3!4b1!4m8!4m7!1m0!1m5!1m1!1s0x89d312f034b7e5d3:0x3a307bb12268080c!2m2!1d-78.8694142!2d42.9111028?hl=en-US' targer="_system">
+    <img class="ar-img-icon" src="css/images/Map.png">
+    <br>
+    <span style="color:#d34834">Directions</span>
+    </a>
+    </div>
+    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    SIEGEL GULLO, Attorneys in Buffalo, NY provides client legal services in the practice areas of Personal Injury, Criminal Defense, D.W.I. Defense and Family Law including Divorce.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    <iframe class="responsive-image maps maps_hp" src="https://maps.google.com/?ie=UTF8&amp;ll=42.910971,-78.869444&amp;spn=0.006186,0.016512&amp;t=h&amp;z=17&amp;output=embed"></iframe>
+       
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+    <ons-list modifier="inset" style="margin-top: 10px">
+    <ons-list-item>
+    <input type="text" name="" class="text-input text-input--transparent" placeholder="Name" style="width: 100%">
+    </ons-list-item>
+    <ons-list-item>
+    <input type="text" class="text-input text-input--transparent" placeholder="Email" style="width: 100%">
+    </ons-list-item>
+
+    <ons-list-item>
+    <textarea class="textarea textarea--transparent" placeholder="Message" style="width: 100%; height: 100px;"></textarea>
+    </ons-list-item>
+    </ons-list>
+
+    <div style="padding: 10px 9px">
+    <ons-button modifier="large" style="margin: 0 auto;">
+    Send
+    </ons-button>
+    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </div>
+    </ons-page>
+    </ons-navigator>
+</script>
+
+<script type="text/ons-template" id="page_contact_map.html">
+    <ons-navigator title="Navigator" var="sNavigator">
+
+    <ons-page id="page_contact_map">
+    <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button onclick="menu.toggleMenu();">
+    <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+    </ons-toolbar-button>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Contact Us</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=88%20W%20Utica%20St,%20Buffalo,%20NY%2014209&key=AIzaSyAUgXS2svsS8bECy3xFX0q_3RhqHdLofHs" allowfullscreen></iframe>
+
+            
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+            
+            
+            
+            <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+    </ons-navigator>
+</script>
+
+
+<script type="text/ons-template" id="page_about.html">
+    <ons-navigator title="Navigator" var="sNavigator">
+
+    <ons-page id="page_about">
+    <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button onclick="menu.toggleMenu();">
+    <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+    </ons-toolbar-button>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">ABOUT SIEGEL GULLO</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+        <p>SIEGEL GULLO, Attorneys in Buffalo, NY provides clients legal services in the practice areas of Personal Injury Law, Criminal Law, DWI Defense and Family Law including Divorce. </p>
+        <p>Since 1997, SIEGEL GULLO, Attorneys has worked hard to achieve victories and obtain successful outcomes for our clients. Our team provides legal services in the practice areas of&nbsp;Personal Injury Law, &nbsp;Criminal and DWI Defense, and&nbsp;Domestic Relations Matters, such as Divorce and Family Law. Our emphasis is always on the interests of our clients – not on our own.</p>
+        <p>At SIEGEL GULLO, Attorneys, we believe that our success in achieving great outcomes for our clients is a result of our dedication,&nbsp; strong work ethic, and&nbsp; respect—for the law, the legal profession and, especially for our clients.&nbsp; SIEGEL GULLO, Attorneys has become well known in the Western New York Legal Community for our integrity, performance and achievements.&nbsp;</p>
+        <p>The attorneys and staff at SIEGEL GULLO, Attorneys are pleased to have enjoyed the trust and business relationships that we have maintained with our longstanding clients. We are proud to zealously advocate for our existing clients and we always welcome the opportunity to be of service to new clients. We encourage you to&nbsp;contact our office&nbsp;today&nbsp;to discuss how we can be of service to you with your&nbsp;Personal Injury&nbsp;,&nbsp;Criminal&nbsp;and&nbsp;DWI Defense&nbsp; or&nbsp;Domestic Relations Matters.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+            
+            
+            
+            <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+    </ons-navigator>
+</script>
+<script type="text/ons-template" id="page_mg_about.html">
+    <ons-navigator title="Navigator" var="sNavigator">
+
+    <ons-page id="page_about">
+    <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button onclick="menu.toggleMenu();">
+    <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+    </ons-toolbar-button>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">ABOUT MELINDA GULLO</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+        <div style="text-align:center;margin-bottom:10%">
+            <img src="./css/images/Mgullo.jpg" width="150">
+        </div>    
+        <p>Melinda Jean Gullo graduated with honors from Canisius College in 2002 with a Bachelor of Arts concentrated in Criminal Justice, Communication Studies and Psychology. While attending Canisius College, Ms. Gullo was one of eight students chosen to spend a month studying in the Philippines for a Third World Immersion program. This experience provided Ms. Gullo with a valuable perspective and knowledge of poverty, religion and criminal justice systems.</p>
+        <p>In 2007, Ms. Gullo graduated Magna Cum Laude from the State University of New York at Buffalo School of Law ("UB Law School") with a Juris Doctorate. As a student at UB Law, Ms. Gullo was case-note editor for the Environmental Law Journal, Philanthropy Chair of the Phi Alpha Delta Fraternity, and Co-coordinator of the Domestic Violence Task Force. At graduation, Ms. Gullo was presented with the New York State Bar Association/Law Student Bar Association Achievement Award for her work as administrator of the Domestic Violence Task Force.</p>
+        <p>At UB Law School, Ms. Gullo focused on course offerings she believed would provide her with practical experience helping people.  As part of an Administrative Fair Hearing Practice Clinic, Ms. Gullo negotiated settlements and represented clients in Department of Social Services Administrative hearings.  She presented her research and findings regarding refund anticipation loans to encourage legislative changes in income tax preparation and interned at Neighborhood Legal Services providing legal representation to the poor.</p>
+        <p>After graduation, Ms. Gullo worked at the law firm of Collins and Maxwell, where she worked with clients on Worker's Compensation matters and cases involving no-fault insurance claims.  She later left there to take a position as a Senior Court Analyst and Executive Director of Housing Court for the City of Buffalo under the Hon. Henry J. Nowak, in Buffalo City Court.  During her time there, she earned a reputation for her tireless dedication, intelligence and strong work ethic. While working for the Court, Ms. Gullo supervised the Receivership and the Funding calendars of the Court.  Her duties also involved conducting pre-trial conferences on behalf of the Court and negotiating settlements between opposing parties.  At Judge Nowak's request, she also drafted legislative proposals and researched and drafted court decisions.  Her common sense approach and keen analytical mind made her invaluable at formulating and directing various court remedies and programs which were instituted to improve the functioning of Housing Court.</p>
+        <p>Ms. Gullo is a member of the Bar Association of Erie County, the New York State Bar Association, the Phi Alpha Delta Law Fraternity, and the Italian American Police Association. She regularly engages in volunteer work, including community work with Brush-Up Buffalo, weatherization work with the Apollo Alliance, and organizational work with various community related fundraising events.  She is also involved in the Susan G. Komen Walk for the Cure, the New York State organ donor program and the Erie County Red Cross blood donor program.  Her selfless dedication to the numerous volunteer activities in which she is engaged truly make her a shining asset to our community.</p>
+        <p>In her spare time, she enjoys golf, horseback riding, reading, and writing, producing and editing educational and instructional videos.</p>
+        <p>Ms. Gullo is a lifelong resident of Western New York, having grown up in North Collins, and currently resides in Lakeview with her two Koi fish and a mélange of beloved dogs.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+            
+            
+            
+            <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+    </ons-navigator>
+</script>
+<script type="text/ons-template" id="page_hs_about.html">
+    <ons-navigator title="Navigator" var="sNavigator">
+
+    <ons-page id="page_about">
+    <ons-toolbar>
+    <div class="left">
+    <ons-toolbar-button onclick="menu.toggleMenu();">
+    <ons-icon class="toolbar_color" icon="fa fa-bars"></ons-icon>
+    </ons-toolbar-button>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">ABOUT HARVEY SIEGEL</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+        <div style="text-align:center;margin-bottom:10%">
+            <img src="./css/images/harvey-siegel.jpg" width="150">
+        </div>    
+
+        <p>Raised in the New York City area, Harvey F Siegel studied Fine Arts in New York from 1981 to 1983. He relocated to Buffalo, New York in 1984, and was immediately taken with the friendly people and the rich cultural and architectural heritage of Western New York. Mr. Siegel now considers himself a Buffalonian. </p>
+        <p>Mr. Siegel later changed his educational and career focus, devoting himself to being of service to others through the practice of law. In 1994, Mr. Siegel graduated with Honors from the State University of New York at Buffalo, earning a B.S. in the Social Sciences Interdisciplinary Legal Studies Program. Two years later, in 1996, he graduated from the State University of New York at Buffalo Law School with a Juris Doctorate.</p>
+        <p>Determined to utilize his legal education without the constraints of working for a law firm, Mr. Siegel opened his law practice immediately upon being sworn in as an attorney in February of 1997. In 2001, the practice relocated to its present location, in what was originally built as the residence for the Catholic Diocese of Buffalo, New York’s Bishop.</p>
+        <p>Mr. Siegel’s practice has grown as has his reputation for hard work, integrity and success in the courtroom. Over time, The Law Office of Harvey Siegel has defined itself as a boutique law practice, primarily concentrating in three practice areas: Personal Injury Law, Criminal Defense and Domestic Relations Representation (Matrimonial and Family Law.)</p>
+        <p>Although the office has become well known, the practice remains dedicated to its original purpose—helping people in need. Mr. Siegel’s makes sure that all of his clients get personal attention and he always ensures that they are kept aware of the status of their cases. Mr. Siegel insists upon his clients’ participation in important decisions about the matters that his office handles for them.</p>
+        <p>Mr. Siegel is involved in many professional committees, including those of the New York State Bar Association, the Bar Association of Erie County, and the Phi Alpha Delta Law Fraternity. He is a frequent guest on WNED’s Lawline program, a public education project involving the collaborative efforts of WNED, the Erie County Bar Foundation and the Bar Association’s Lawyer Referral and Information Service.</p>
+        <p>Mr. Siegel was appointed to serve as an Inspector for the New York State Athletic Commission in 2005. As an Inspector, he helps regulate professional boxing in New York State.</p>
+        <p>Although Mr. Siegel’s educational and career focus changed many years ago to serving others through the practice of law, his interest in and appreciation for the Arts has not waned. His personal collection includes the works of many Western New York artists.  Mr. Siegel is active in the local Arts community and continues to create his own original works of art.</p>
+        <p>Mr. Siegel has contributed many of his own paintings to local fundraising efforts, including those of the Buffalo and Erie County Historical Society, the Burchfield-Penny Art Center, AIDS Community Services of Western New York and the Volunteer Lawyers Project, in conjunction with Legal Services for the Elderly, Disabled and Disadvantaged.</p>
+        <p>Since law school, Mr. Siegel has been involved in Hillel of Buffalo, an organization that provides cultural continuity and religious services to college students. In 2008, he created an Ark for Hillel, which holds the sacred Torah scrolls.</p>
+        <p>Currently, Mr. Siegel lives in Amherst, New York with Samantha, a chocolate Labrador retriever, and his Great Dane Zeus who frequently comes to work with him.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+            
+            
+            
+            <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+    </ons-navigator>
+</script>
+
+
+<script type="text/ons-template" id="page_divorce.html">
+
+    <ons-page id="page_divorce">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Divorce</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Divorce</h4>
+    <p>In New York, marriage can only be altered or dissolved by the New York State Supreme Court. To get divorced you must specify grounds(reasons) for divorce.</p>
+    <p>Grounds are valid reasons, which must exist and be proven to the Supreme Court’s satisfaction. Without grounds, the Court does not have the power to grant a divorce, even if both parties want to be divorced.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Grounds for Divorce </h4>
+    1. Cruel and inhuman treatment of one party by the other,<br />
+    2. Abandonment for one or more years,<br />
+    3. Imprisonment for three or more years,<br />
+    4. Adultery.<br />
+    5. Living separate and apart pursuant to a separation judgment or decree,<br />
+    6. Living separate and apart pursuant to a separation agreement, and for one year or more<br />
+    7. Irretrievable breakdown in relationship for a period of at least six months.<br />
+    Conversion Divorce<br />
+    8. Irretrievable Breakdown
+
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Conversion Divorce </h4>
+    A conversion divorce, involves converting a separation into a divorce. Parties who are legally separated are required to file for divorce, should they wish to no longer be married. To qualify for this type of divorce, the following conditions must be met by the plaintiff.
+    1. The parties have been legally separated for one year or more, and,<br />
+    2. The party seeking the divorce has substantially complied with the terms of the separation agreement (or decree).,<br />
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Irretrievable Breakdown </h4>
+    Using irretrievable breakdown as ground allows one spouse to unilaterally end the marriage. To qualify for this type of divorce, the following conditions must be met by the Plaintiff:
+    <br />
+    1. The relationship between the Husband and Wife must have broken down irretrievably for a period of six months or more,<br />
+    2. One party must testify (under oath or by affidavit) regarding the breakdown, and.,<br />
+    3. All related issues (including property division, spousal support, child support, counsel fees/expenses, and child custody visitation) must have already been resolved or have been ordered by a court.<br />
+    </div>
+    </ons-col>
+    </ons-list-item>
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Equitable Distribution </h4>
+    The Equitable Distribution Law (EDL) covers all issues concerning the<br />
+    1. Determination or division of assets,,<br />
+    2. Determination or division of liabilities, and,<br />
+    3. Fixing of spousal maintenance.<br />
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    </ons-list>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    SIEGEL GULLO, Attorneys in Buffalo, NY provides client legal services in the practice areas of Personal Injury, Criminal Defense, D.W.I. Defense and Family Law including Divorce.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_custody.html">
+
+    <ons-page id="page_custody">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Child Custody</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <p>In child custody matters, the Court determines custody based on what it believes to be the best interests of the children. This aspect can be the most complicated and controversial component of a divorce in New York. Sometimes children become a bartering tool and their well-being gets lost in the game of tug-of-war.</p>
+    <p>When the parents disagree about issues of child custody, the New York Court will often appoint an attorney for the child who will advocate for the child’s wishes or, if the child is too young to express themselves, advocate for that which the attorney believes to be in the child's best interest regarding child custody and an appropriate visitation schedule.<br>
+    <a style="color:red" href='javascript:;' onclick="page_contact();"><u>Contact an attorney</u></a> now.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Sole Custody </h4>
+    If the parents are not awarded joint custody, one parent will have sole custody of the children. Sole custody means that a parent has the authority to make legal decisions for the children. The non-custodial parent is awarded specific visitation with the children.
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Joint Custody</h4>
+    In joint custody, both parents have legal custody with one parent designated as the primary residential parent. Joint legal custody means that both parents have the right to make major decisions for their children. These decisions include residence of the child, medical and dental treatment, education, child care, religious education, extra-curricular activities, summer camp and recreation
+    </div>
+    </ons-col>
+    </ons-list-item>
+
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <h4>Joint-Shared Custody </h4>
+    In joint-shared custody, both parents share legal custody with each parent having specific periods of responsibility with the children. This arrangement gives both parents the right to make major decisions on an equal basis for their children.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    SIEGEL GULLO, Attorneys in Buffalo, NY provides client legal services in the practice areas of Personal Injury, Criminal Defense, D.W.I. Defense and Family Law including Divorce.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_child.html">
+
+    <ons-page id="page_child">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Child Support</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <p>The basic child support obligation to be paid by the non-custodial/non-residential parent is based upon a percentage of the combined parental income, less FICA.  For one child the amount is 17%, for two children 25%, for three children 29%, and for four children 31%. In addition to the basic child support obligation, the non-custodial, non-residential parent may have to pay for a portion health care expenses and of the child care expenses related to the other parent’s employment or employment related education.</p>
+    <p>Parents may avoid the use of the percentages in determining the amount of child support by executing an agreement setting forth the amount of child support which they believe to be fair. An agreement determining the amount of child support must satisfy certain technical provisions of the Child Support Standards Act.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    SIEGEL GULLO, Attorneys in Buffalo, NY provides client legal services in the practice areas of Personal Injury, Criminal Defense, D.W.I. Defense and Family Law including Divorce.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_spousal.html">
+
+    <ons-page id="page_child">
+    <ons-toolbar>
+    <div class="left">
+    <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+    </div>
+    </div>
+    <div class="center">
+    <span id="search-text" class="toolbar_font_size">Spousal Maintenance</span>
+    </div>
+    <div class="right">
+        
+    </div>
+
+    </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    <p>Spousal Maintenance may be awarded to one spouse, payable by the other spouse.</p>
+    <p>Temporary Maintenance that is to be paid while the action of divorce is pending in cases where there exists a substantial disparity in the incomes of the parties.</p>
+    <p>Post-Divorce Spousal maintenance is paid after the conclusion of the parties’ divorce. Post-divorce spousal maintenance is based upon factors set forth in the EDL, may be for a limited or indefinite time period. It may be waived by agreement, under certain circumstances.</p>
+    <p>In calculating spousal maintenance, the Court will consider serveral factors, such as prior standard of living of the parties, present and future earning capacity of the parties, and ability of the party seeking spousal maintenance to become self-supporting.</p>
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+
+
+    <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+    <div class="card-ar blue darken-2"  >
+    <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Like Us on Facebook
+    </div>
+    </a>
+    </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+<script type="text/ons-template" id="page_child_support_calculator.html">
+
+    <ons-page id="page_child_support_calculator">
+        <ons-toolbar>
+            <div class="left">
+                <div class="left ar-bk-btn" onclick="sNavigator.popPage('mainmenu.html');">
+                    <i class="fa fa-chevron-left Prog_out_lefticon prog_out-head1text-i" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="center">
+            <span id="search-text" class="toolbar_font_size">Child Support Calculator</span>
+        </div>
+    <div class="right">
+        
+    </div>
+
+            </ons-toolbar>
+    <ons-scroller style="height: 100%; width: 100%;" class="scrollerpad">    <div>    <img src="icon.png" class="icon-home" >    <span  class="toolbar_font_size text-home" >SIEGEL GULLO, Attorneys</span>    </div>
+    <iframe width="100%" height="450" frameborder="0" style="border:0" src="http://scoutadvertisingllc.com/siegel-ios/child-calc.php?from=app" allowfullscreen></iframe>
+
+    <div class="card-ar red darken-2" style="width:45%;margin-left:25%">
+    <a href="#" onclick="page_contact();">
+    <div style=" color: #FFF; " class="card-action singletextpad">
+        Contact an Attorney <br>(716) 883-4800
+    </div>
+    </a>
+    </div>
+            
+            
+            
+            <div class="row mainpagemargin">
+    <div class="s4 m2 social_media_hr">
+        <div class="card-ar blue darken-2"  >
+            <a href="https://www.facebook.com/The-Law-Office-of-Harvey-F-Siegel-197141330332547/" target="_system">
+                <div class="card-content center white-text">
+                    <img style="height: 30px; width: auto;" src="css/images/facebook.png">
+                </div>
+                <div style=" color: #FFF; " class="card-action singletextpad">
+                    Like Us on Facebook
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="s4 m2">
+    <div class="card-ar red darken-2"  >
+    <a href="https://plus.google.com/103802809227805060014" target="_system">
+    <div class="card-content center white-text">
+    <img style="height: 30px; width: auto;" src="css/images/google.png">
+    </div>
+    <div style=" color: #FFF; " class="card-action singletextpad">
+    Add Us on Google Plus
+    </div>
+    </a>
+    </div>
+    </div>
+    </div>
+
+
+    <ons-list class="timeline" modifier="inset">
+    <ons-list-item class="timeline-li" modifier="tappable">
+    <ons-col>
+    <div class="timeline-message" style="padding:10px;text-align:justify">
+    THE INFORMATION OBTAINED FROM THIS WEBSITE IS NOT INTENDED AS A SUBSTITUTION FOR LEGAL COUNSEL. CONSULT WITH AN ATTORNEY REGARDING YOUR CASE. STOCK PHOTOS ARE USED.
+    </div>
+    </ons-col>
+    </ons-list-item>
+    </ons-list>
+    </ons-scroller>
+
+    <div class="" style=" min-height:40px;   background: #d34834;">
+    <p class="ar-footer" >COPYRIGHT 2017. ALL RIGHTS RESERVED <br />Desktop View</p>
+
+    </div>
+    </ons-page>
+</script>
+</body>
+<script>
+function hidePaid() {
+    $('#paid-work').css('display', 'none');
+    $('#free-work').css('display', 'block');
+    // $('#paid-radio').removeAttr('checked', 'true');
+    $('#paid-radio').css('color', 'rgba(18,114,224,0.77)');
+    $('#free-radio').css('color', '#FFF');
+    $('#paid-radio').css('background-color', '#FFF');
+    $('#free-radio').css('background-color', 'rgba(18,114,224,0.77)');
+
+}
+function hideFree() {
+    $('#paid-work').css('display', 'block');
+    $('#free-work').css('display', 'none');
+//                                $('#free-radio').removeAttr('checked', 'true');
+//                                $('#paid-radio').attr('checked', 'true');
+//                                
+    $('#free-radio').css('color', 'rgba(18,114,224,0.77)');
+    $('#paid-radio').css('color', '#FFF');
+    $('#free-radio').css('background-color', '#FFF');
+    $('#paid-radio').css('background-color', 'rgba(18,114,224,0.77)');
+
+}
+</script>  
